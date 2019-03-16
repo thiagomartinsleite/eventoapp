@@ -1,9 +1,29 @@
 package com.eventoapp.models;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 import java.sql.Date;
 
-public class Evento {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import javassist.SerialVersionUID;
+
+@Entity
+public class Evento implements Serializable{
+	
+	private static final long SerialVersionUID = 1L;
+	public long getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
+	}
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long codigo;
 	private String nome;
 	private String local;
 	private Date data;
