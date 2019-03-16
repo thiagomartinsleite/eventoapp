@@ -1,13 +1,15 @@
 package com.eventoapp.models;
 
 import java.io.Serializable;
-import java.security.Timestamp;
 import java.sql.Date;
+import java.sql.Time;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Evento implements Serializable{
@@ -28,7 +30,8 @@ public class Evento implements Serializable{
 	private String nome;
 	private String local;
 	private Date data;
-	private Timestamp hora;
+	@DateTimeFormat(pattern="HH:mm")
+	private String hora;
 	public String getNome() {
 		return nome;
 	}
@@ -47,10 +50,10 @@ public class Evento implements Serializable{
 	public void setData(Date data) {
 		this.data = data;
 	}
-	public Timestamp getHora() {
+	public String getHora() {
 		return hora;
 	}
-	public void setHora(Timestamp hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 	
