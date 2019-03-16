@@ -13,7 +13,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/*! cash-dom 1.3.5, https://github.com/kenwheeler/cash @license MIT */
+/* ! cash-dom 1.3.5, https://github.com/kenwheeler/cash @license MIT */
 (function (factory) {
   window.cash = factory();
 })(function () {
@@ -98,7 +98,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return this;
     }
 
-    // If a single DOM element is passed in or received via ID, return the single element
+    // If a single DOM element is passed in or received via ID, return the
+	// single element
     if (elems.nodeType || elems === win) {
       this[0] = elems;
       this.length = 1;
@@ -117,7 +118,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     return new Init(selector, context);
   }
 
-  var fn = cash.fn = cash.prototype = Init.prototype = { // jshint ignore:line
+  var fn = cash.fn = cash.prototype = Init.prototype = { // jshint
+															// ignore:line
     cash: true,
     length: 0,
     push: push,
@@ -541,6 +543,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     node.addEventListener(eventName, callback);
   }
 
+  	document.addEventListener('DOMContentLoaded', function() {
+	    var elems = document.querySelectorAll('.datepicker');
+	    var instances = M.Datepicker.init(elems, options);
+	  });
+  
   function removeEvent(node, eventName, callback) {
     var events = getData(node, "_cashEvents"),
         eventCache = events && events[eventName],
@@ -628,11 +635,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     ready: onReady,
 
     /**
-     * Modified
-     * Triggers browser event
-     * @param String eventName
-     * @param Object data - Add properties to event object
-     */
+	 * Modified Triggers browser event
+	 * 
+	 * @param String
+	 *            eventName
+	 * @param Object
+	 *            data - Add properties to event object
+	 */
     trigger: function (eventName, data) {
       if (document.createEvent) {
         var evt = document.createEvent('HTMLEvents');
@@ -1006,11 +1015,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 ;
 var Component = function () {
   /**
-   * Generic constructor for all components
-   * @constructor
-   * @param {Element} el
-   * @param {Object} options
-   */
+	 * Generic constructor for all components
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
   function Component(classDef, el, options) {
     _classCallCheck(this, Component);
 
@@ -1030,11 +1042,15 @@ var Component = function () {
   }
 
   /**
-   * Initializes components
-   * @param {class} classDef
-   * @param {Element | NodeList | jQuery} els
-   * @param {Object} options
-   */
+	 * Initializes components
+	 * 
+	 * @param {class}
+	 *            classDef
+	 * @param {Element |
+	 *            NodeList | jQuery} els
+	 * @param {Object}
+	 *            options
+	 */
 
 
   _createClass(Component, null, [{
@@ -1126,9 +1142,13 @@ document.addEventListener('blur', docHandleBlur, true);
 
 /**
  * Initialize jQuery wrapper for plugin
- * @param {Class} plugin  javascript class
- * @param {string} pluginName  jQuery plugin name
- * @param {string} classRef  Class reference name
+ * 
+ * @param {Class}
+ *            plugin javascript class
+ * @param {string}
+ *            pluginName jQuery plugin name
+ * @param {string}
+ *            classRef Class reference name
  */
 M.initializeJqueryWrapper = function (plugin, pluginName, classRef) {
   jQuery.fn[pluginName] = function (methodOrOptions) {
@@ -1154,14 +1174,16 @@ M.initializeJqueryWrapper = function (plugin, pluginName, classRef) {
       return this;
     }
 
-    // Return error if an unrecognized  method name is passed in
+    // Return error if an unrecognized method name is passed in
     jQuery.error("Method " + methodOrOptions + " does not exist on jQuery." + pluginName);
   };
 };
 
 /**
  * Automatically initialize components
- * @param {Element} context  DOM Element to search within for components
+ * 
+ * @param {Element}
+ *            context DOM Element to search within for components
  */
 M.AutoInit = function (context) {
   // Use document.body if no context is given
@@ -1196,7 +1218,9 @@ M.AutoInit = function (context) {
 
 /**
  * Generate approximated selector string for a jQuery object
- * @param {jQuery} obj  jQuery object to be parsed
+ * 
+ * @param {jQuery}
+ *            obj jQuery object to be parsed
  * @returns {string}
  */
 M.objectSelectorString = function (obj) {
@@ -1218,7 +1242,9 @@ M.guid = function () {
 
 /**
  * Escapes hash from special characters
- * @param {string} hash  String returned from this.hash
+ * 
+ * @param {string}
+ *            hash String returned from this.hash
  * @returns {string}
  */
 M.escapeHash = function (hash) {
@@ -1240,25 +1266,29 @@ M.elementOrParentIsFixed = function (element) {
 
 /**
  * @typedef {Object} Edges
- * @property {Boolean} top  If the top edge was exceeded
- * @property {Boolean} right  If the right edge was exceeded
- * @property {Boolean} bottom  If the bottom edge was exceeded
- * @property {Boolean} left  If the left edge was exceeded
+ * @property {Boolean} top If the top edge was exceeded
+ * @property {Boolean} right If the right edge was exceeded
+ * @property {Boolean} bottom If the bottom edge was exceeded
+ * @property {Boolean} left If the left edge was exceeded
  */
 
 /**
  * @typedef {Object} Bounding
- * @property {Number} left  left offset coordinate
- * @property {Number} top  top offset coordinate
+ * @property {Number} left left offset coordinate
+ * @property {Number} top top offset coordinate
  * @property {Number} width
  * @property {Number} height
  */
 
 /**
  * Escapes hash from special characters
- * @param {Element} container  Container element that acts as the boundary
- * @param {Bounding} bounding  element bounding that is being checked
- * @param {Number} offset  offset from edge that counts as exceeding
+ * 
+ * @param {Element}
+ *            container Container element that acts as the boundary
+ * @param {Bounding}
+ *            bounding element bounding that is being checked
+ * @param {Number}
+ *            offset offset from edge that counts as exceeding
  * @returns {Edges}
  */
 M.checkWithinContainer = function (container, bounding, offset) {
@@ -1365,7 +1395,9 @@ M.getOverflowParent = function (element) {
 
 /**
  * Gets id of component from a trigger
- * @param {Element} trigger  trigger
+ * 
+ * @param {Element}
+ *            trigger trigger
  * @returns {string}
  */
 M.getIdFromTrigger = function (trigger) {
@@ -1383,6 +1415,7 @@ M.getIdFromTrigger = function (trigger) {
 
 /**
  * Multi browser support for document scroll top
+ * 
  * @returns {Number}
  */
 M.getDocumentScrollTop = function () {
@@ -1391,6 +1424,7 @@ M.getDocumentScrollTop = function () {
 
 /**
  * Multi browser support for document scroll left
+ * 
  * @returns {Number}
  */
 M.getDocumentScrollLeft = function () {
@@ -1399,22 +1433,23 @@ M.getDocumentScrollLeft = function () {
 
 /**
  * @typedef {Object} Edges
- * @property {Boolean} top  If the top edge was exceeded
- * @property {Boolean} right  If the right edge was exceeded
- * @property {Boolean} bottom  If the bottom edge was exceeded
- * @property {Boolean} left  If the left edge was exceeded
+ * @property {Boolean} top If the top edge was exceeded
+ * @property {Boolean} right If the right edge was exceeded
+ * @property {Boolean} bottom If the bottom edge was exceeded
+ * @property {Boolean} left If the left edge was exceeded
  */
 
 /**
  * @typedef {Object} Bounding
- * @property {Number} left  left offset coordinate
- * @property {Number} top  top offset coordinate
+ * @property {Number} left left offset coordinate
+ * @property {Number} top top offset coordinate
  * @property {Number} width
  * @property {Number} height
  */
 
 /**
  * Get time in ms
+ * 
  * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
  * @type {function}
  * @return {number}
@@ -1425,14 +1460,18 @@ var getTime = Date.now || function () {
 
 /**
  * Returns a function, that, when invoked, will only be triggered at most once
- * during a given window of time. Normally, the throttled function will run
- * as much as it can, without ever going more than once per `wait` duration;
- * but if you'd like to disable the execution on the leading edge, pass
- * `{leading: false}`. To disable execution on the trailing edge, ditto.
+ * during a given window of time. Normally, the throttled function will run as
+ * much as it can, without ever going more than once per `wait` duration; but if
+ * you'd like to disable the execution on the leading edge, pass `{leading:
+ * false}`. To disable execution on the trailing edge, ditto.
+ * 
  * @license https://raw.github.com/jashkenas/underscore/master/LICENSE
- * @param {function} func
- * @param {number} wait
- * @param {Object=} options
+ * @param {function}
+ *            func
+ * @param {number}
+ *            wait
+ * @param {Object=}
+ *            options
  * @returns {Function}
  */
 M.throttle = function (func, wait, options) {
@@ -1467,10 +1506,8 @@ M.throttle = function (func, wait, options) {
   };
 };
 ; /*
-  v2.2.0
-  2017 Julian Garnier
-  Released under the MIT license
-  */
+	 * v2.2.0 2017 Julian Garnier Released under the MIT license
+	 */
 var $jscomp = { scope: {} };$jscomp.defineProperty = "function" == typeof Object.defineProperties ? Object.defineProperty : function (e, r, p) {
   if (p.get || p.set) throw new TypeError("ES3 does not support getters and setters.");e != Array.prototype && e != Object.prototype && (e[r] = p.value);
 };$jscomp.getGlobal = function (e) {
@@ -1897,19 +1934,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Collapsible = function (_Component) {
     _inherits(Collapsible, _Component);
 
     /**
-     * Construct Collapsible instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Collapsible instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Collapsible(el, options) {
       _classCallCheck(this, Collapsible);
 
@@ -1918,16 +1958,21 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this3.el.M_Collapsible = _this3;
 
       /**
-       * Options for the collapsible
-       * @member Collapsible#options
-       * @prop {Boolean} [accordion=false] - Type of the collapsible
-       * @prop {Function} onOpenStart - Callback function called before collapsible is opened
-       * @prop {Function} onOpenEnd - Callback function called after collapsible is opened
-       * @prop {Function} onCloseStart - Callback function called before collapsible is closed
-       * @prop {Function} onCloseEnd - Callback function called after collapsible is closed
-       * @prop {Number} inDuration - Transition in duration in milliseconds.
-       * @prop {Number} outDuration - Transition duration in milliseconds.
-       */
+		 * Options for the collapsible
+		 * 
+		 * @member Collapsible#options
+		 * @prop {Boolean} [accordion=false] - Type of the collapsible
+		 * @prop {Function} onOpenStart - Callback function called before
+		 *       collapsible is opened
+		 * @prop {Function} onOpenEnd - Callback function called after
+		 *       collapsible is opened
+		 * @prop {Function} onCloseStart - Callback function called before
+		 *       collapsible is closed
+		 * @prop {Function} onCloseEnd - Callback function called after
+		 *       collapsible is closed
+		 * @prop {Number} inDuration - Transition in duration in milliseconds.
+		 * @prop {Number} outDuration - Transition duration in milliseconds.
+		 */
       _this3.options = $.extend({}, Collapsible.defaults, options);
 
       // Setup tab indices
@@ -1953,16 +1998,16 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this.el.M_Collapsible = undefined;
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -1978,8 +2023,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -1993,9 +2038,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Collapsible Click
-       * @param {Event} e
-       */
+		 * Handle Collapsible Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleCollapsibleClick",
@@ -2019,9 +2066,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Collapsible Keydown
-       * @param {Event} e
-       */
+		 * Handle Collapsible Keydown
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleCollapsibleKeydown",
@@ -2032,9 +2081,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animate in collapsible slide
-       * @param {Number} index - 0th index of slide
-       */
+		 * Animate in collapsible slide
+		 * 
+		 * @param {Number}
+		 *            index - 0th index of slide
+		 */
 
     }, {
       key: "_animateIn",
@@ -2087,9 +2138,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animate out collapsible slide
-       * @param {Number} index - 0th index of slide to open
-       */
+		 * Animate out collapsible slide
+		 * 
+		 * @param {Number}
+		 *            index - 0th index of slide to open
+		 */
 
     }, {
       key: "_animateOut",
@@ -2126,9 +2179,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Open Collapsible
-       * @param {Number} index - 0th index of slide
-       */
+		 * Open Collapsible
+		 * 
+		 * @param {Number}
+		 *            index - 0th index of slide
+		 */
 
     }, {
       key: "open",
@@ -2159,9 +2214,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Close Collapsible
-       * @param {Number} index - 0th index of slide
-       */
+		 * Close Collapsible
+		 * 
+		 * @param {Number}
+		 *            index - 0th index of slide
+		 */
 
     }, {
       key: "close",
@@ -2185,8 +2242,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -2231,8 +2288,8 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   */
+	 * @class
+	 */
 
   var Dropdown = function (_Component2) {
     _inherits(Dropdown, _Component2);
@@ -2250,40 +2307,52 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this9.$dropdownEl = $(_this9.dropdownEl);
 
       /**
-       * Options for the dropdown
-       * @member Dropdown#options
-       * @prop {String} [alignment='left'] - Edge which the dropdown is aligned to
-       * @prop {Boolean} [autoFocus=true] - Automatically focus dropdown el for keyboard
-       * @prop {Boolean} [constrainWidth=true] - Constrain width to width of the button
-       * @prop {Element} container - Container element to attach dropdown to (optional)
-       * @prop {Boolean} [coverTrigger=true] - Place dropdown over trigger
-       * @prop {Boolean} [closeOnClick=true] - Close on click of dropdown item
-       * @prop {Boolean} [hover=false] - Open dropdown on hover
-       * @prop {Number} [inDuration=150] - Duration of open animation in ms
-       * @prop {Number} [outDuration=250] - Duration of close animation in ms
-       * @prop {Function} onOpenStart - Function called when dropdown starts opening
-       * @prop {Function} onOpenEnd - Function called when dropdown finishes opening
-       * @prop {Function} onCloseStart - Function called when dropdown starts closing
-       * @prop {Function} onCloseEnd - Function called when dropdown finishes closing
-       */
+		 * Options for the dropdown
+		 * 
+		 * @member Dropdown#options
+		 * @prop {String} [alignment='left'] - Edge which the dropdown is
+		 *       aligned to
+		 * @prop {Boolean} [autoFocus=true] - Automatically focus dropdown el
+		 *       for keyboard
+		 * @prop {Boolean} [constrainWidth=true] - Constrain width to width of
+		 *       the button
+		 * @prop {Element} container - Container element to attach dropdown to
+		 *       (optional)
+		 * @prop {Boolean} [coverTrigger=true] - Place dropdown over trigger
+		 * @prop {Boolean} [closeOnClick=true] - Close on click of dropdown item
+		 * @prop {Boolean} [hover=false] - Open dropdown on hover
+		 * @prop {Number} [inDuration=150] - Duration of open animation in ms
+		 * @prop {Number} [outDuration=250] - Duration of close animation in ms
+		 * @prop {Function} onOpenStart - Function called when dropdown starts
+		 *       opening
+		 * @prop {Function} onOpenEnd - Function called when dropdown finishes
+		 *       opening
+		 * @prop {Function} onCloseStart - Function called when dropdown starts
+		 *       closing
+		 * @prop {Function} onCloseEnd - Function called when dropdown finishes
+		 *       closing
+		 */
       _this9.options = $.extend({}, Dropdown.defaults, options);
 
       /**
-       * Describes open/close state of dropdown
-       * @type {Boolean}
-       */
+		 * Describes open/close state of dropdown
+		 * 
+		 * @type {Boolean}
+		 */
       _this9.isOpen = false;
 
       /**
-       * Describes if dropdown content is scrollable
-       * @type {Boolean}
-       */
+		 * Describes if dropdown content is scrollable
+		 * 
+		 * @type {Boolean}
+		 */
       _this9.isScrollable = false;
 
       /**
-       * Describes if touch moving on dropdown content
-       * @type {Boolean}
-       */
+		 * Describes if touch moving on dropdown content
+		 * 
+		 * @type {Boolean}
+		 */
       _this9.isTouchMoving = false;
 
       _this9.focusedIndex = -1;
@@ -2312,8 +2381,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._resetDropdownStyles();
         this._removeEventHandlers();
@@ -2322,8 +2391,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -2350,8 +2419,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -2408,7 +2477,8 @@ $jscomp.polyfill = function (e, r, p, m) {
           leaveToActiveDropdownTrigger = true;
         }
 
-        // Close hover dropdown if mouse did not leave to either active dropdown-trigger or dropdown-content
+        // Close hover dropdown if mouse did not leave to either active
+		// dropdown-trigger or dropdown-content
         if (!leaveToActiveDropdownTrigger && !leaveToDropdownContent) {
           this.close();
         }
@@ -2442,9 +2512,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Document Touchmove
-       * @param {Event} e
-       */
+		 * Handle Document Touchmove
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleDocumentTouchmove",
@@ -2456,9 +2528,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Dropdown Click
-       * @param {Event} e
-       */
+		 * Handle Dropdown Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleDropdownClick",
@@ -2471,9 +2545,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Dropdown Keydown
-       * @param {Event} e
-       */
+		 * Handle Dropdown Keydown
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleDropdownKeydown",
@@ -2542,8 +2618,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup dropdown
-       */
+		 * Setup dropdown
+		 */
 
     }, {
       key: "_resetFilterQuery",
@@ -2667,8 +2743,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animate in dropdown
-       */
+		 * Animate in dropdown
+		 */
 
     }, {
       key: "_animateIn",
@@ -2700,8 +2776,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animate out dropdown
-       */
+		 * Animate out dropdown
+		 */
 
     }, {
       key: "_animateOut",
@@ -2731,8 +2807,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Place dropdown
-       */
+		 * Place dropdown
+		 */
 
     }, {
       key: "_placeDropdown",
@@ -2750,8 +2826,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Open Dropdown
-       */
+		 * Open Dropdown
+		 */
 
     }, {
       key: "open",
@@ -2776,8 +2852,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Close Dropdown
-       */
+		 * Close Dropdown
+		 */
 
     }, {
       key: "close",
@@ -2802,8 +2878,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Recalculate dimensions
-       */
+		 * Recalculate dimensions
+		 */
 
     }, {
       key: "recalculateDimensions",
@@ -2826,8 +2902,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -2846,9 +2922,9 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   /**
-   * @static
-   * @memberof Dropdown
-   */
+	 * @static
+	 * @memberof Dropdown
+	 */
 
 
   Dropdown._dropdowns = [];
@@ -2877,19 +2953,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Modal = function (_Component3) {
     _inherits(Modal, _Component3);
 
     /**
-     * Construct Modal instance and set up overlay
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Modal instance and set up overlay
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Modal(el, options) {
       _classCallCheck(this, Modal);
 
@@ -2898,25 +2977,32 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this13.el.M_Modal = _this13;
 
       /**
-       * Options for the modal
-       * @member Modal#options
-       * @prop {Number} [opacity=0.5] - Opacity of the modal overlay
-       * @prop {Number} [inDuration=250] - Length in ms of enter transition
-       * @prop {Number} [outDuration=250] - Length in ms of exit transition
-       * @prop {Function} onOpenStart - Callback function called before modal is opened
-       * @prop {Function} onOpenEnd - Callback function called after modal is opened
-       * @prop {Function} onCloseStart - Callback function called before modal is closed
-       * @prop {Function} onCloseEnd - Callback function called after modal is closed
-       * @prop {Boolean} [dismissible=true] - Allow modal to be dismissed by keyboard or overlay click
-       * @prop {String} [startingTop='4%'] - startingTop
-       * @prop {String} [endingTop='10%'] - endingTop
-       */
+		 * Options for the modal
+		 * 
+		 * @member Modal#options
+		 * @prop {Number} [opacity=0.5] - Opacity of the modal overlay
+		 * @prop {Number} [inDuration=250] - Length in ms of enter transition
+		 * @prop {Number} [outDuration=250] - Length in ms of exit transition
+		 * @prop {Function} onOpenStart - Callback function called before modal
+		 *       is opened
+		 * @prop {Function} onOpenEnd - Callback function called after modal is
+		 *       opened
+		 * @prop {Function} onCloseStart - Callback function called before modal
+		 *       is closed
+		 * @prop {Function} onCloseEnd - Callback function called after modal is
+		 *       closed
+		 * @prop {Boolean} [dismissible=true] - Allow modal to be dismissed by
+		 *       keyboard or overlay click
+		 * @prop {String} [startingTop='4%'] - startingTop
+		 * @prop {String} [endingTop='10%'] - endingTop
+		 */
       _this13.options = $.extend({}, Modal.defaults, options);
 
       /**
-       * Describes open/close state of modal
-       * @type {Boolean}
-       */
+		 * Describes open/close state of modal
+		 * 
+		 * @type {Boolean}
+		 */
       _this13.isOpen = false;
 
       _this13.id = _this13.$el.attr('id');
@@ -2935,8 +3021,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         Modal._count--;
         this._removeEventHandlers();
@@ -2946,8 +3032,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -2963,8 +3049,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -2977,9 +3063,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Trigger Click
-       * @param {Event} e
-       */
+		 * Handle Trigger Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleTriggerClick",
@@ -2996,8 +3084,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Overlay Click
-       */
+		 * Handle Overlay Click
+		 */
 
     }, {
       key: "_handleOverlayClick",
@@ -3008,9 +3096,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Modal Close Click
-       * @param {Event} e
-       */
+		 * Handle Modal Close Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleModalCloseClick",
@@ -3022,9 +3112,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Keydown
-       * @param {Event} e
-       */
+		 * Handle Keydown
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleKeydown",
@@ -3036,22 +3128,25 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Focus
-       * @param {Event} e
-       */
+		 * Handle Focus
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleFocus",
       value: function _handleFocus(e) {
-        // Only trap focus if this modal is the last model opened (prevents loops in nested modals).
+        // Only trap focus if this modal is the last model opened (prevents
+		// loops in nested modals).
         if (!this.el.contains(e.target) && this._nthModalOpened === Modal._modalsOpen) {
           this.el.focus();
         }
       }
 
       /**
-       * Animate in modal
-       */
+		 * Animate in modal
+		 */
 
     }, {
       key: "_animateIn",
@@ -3110,8 +3205,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animate out modal
-       */
+		 * Animate out modal
+		 */
 
     }, {
       key: "_animateOut",
@@ -3164,9 +3259,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Open Modal
-       * @param {cash} [$trigger]
-       */
+		 * Open Modal
+		 * 
+		 * @param {cash}
+		 *            [$trigger]
+		 */
 
     }, {
       key: "open",
@@ -3183,7 +3280,8 @@ $jscomp.polyfill = function (e, r, p, m) {
         this.$overlay[0].style.zIndex = 1000 + Modal._modalsOpen * 2;
         this.el.style.zIndex = 1000 + Modal._modalsOpen * 2 + 1;
 
-        // Set opening trigger, undefined indicates modal was opened by javascript
+        // Set opening trigger, undefined indicates modal was opened by
+		// javascript
         this._openingTrigger = !!$trigger ? $trigger[0] : undefined;
 
         // onOpenStart callback
@@ -3216,8 +3314,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Close Modal
-       */
+		 * Close Modal
+		 */
 
     }, {
       key: "close",
@@ -3259,8 +3357,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -3279,17 +3377,17 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   /**
-   * @static
-   * @memberof Modal
-   */
+	 * @static
+	 * @memberof Modal
+	 */
 
 
   Modal._modalsOpen = 0;
 
   /**
-   * @static
-   * @memberof Modal
-   */
+	 * @static
+	 * @memberof Modal
+	 */
   Modal._count = 0;
 
   M.Modal = Modal;
@@ -3311,19 +3409,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Materialbox = function (_Component4) {
     _inherits(Materialbox, _Component4);
 
     /**
-     * Construct Materialbox instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Materialbox instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Materialbox(el, options) {
       _classCallCheck(this, Materialbox);
 
@@ -3332,15 +3433,20 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this16.el.M_Materialbox = _this16;
 
       /**
-       * Options for the modal
-       * @member Materialbox#options
-       * @prop {Number} [inDuration=275] - Length in ms of enter transition
-       * @prop {Number} [outDuration=200] - Length in ms of exit transition
-       * @prop {Function} onOpenStart - Callback function called before materialbox is opened
-       * @prop {Function} onOpenEnd - Callback function called after materialbox is opened
-       * @prop {Function} onCloseStart - Callback function called before materialbox is closed
-       * @prop {Function} onCloseEnd - Callback function called after materialbox is closed
-       */
+		 * Options for the modal
+		 * 
+		 * @member Materialbox#options
+		 * @prop {Number} [inDuration=275] - Length in ms of enter transition
+		 * @prop {Number} [outDuration=200] - Length in ms of exit transition
+		 * @prop {Function} onOpenStart - Callback function called before
+		 *       materialbox is opened
+		 * @prop {Function} onOpenEnd - Callback function called after
+		 *       materialbox is opened
+		 * @prop {Function} onCloseStart - Callback function called before
+		 *       materialbox is closed
+		 * @prop {Function} onCloseEnd - Callback function called after
+		 *       materialbox is closed
+		 */
       _this16.options = $.extend({}, Materialbox.defaults, options);
 
       _this16.overlayActive = false;
@@ -3364,8 +3470,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this.el.M_Materialbox = undefined;
@@ -3377,8 +3483,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -3388,8 +3494,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -3398,9 +3504,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Materialbox Click
-       * @param {Event} e
-       */
+		 * Handle Materialbox Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleMaterialboxClick",
@@ -3414,8 +3522,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Window Scroll
-       */
+		 * Handle Window Scroll
+		 */
 
     }, {
       key: "_handleWindowScroll",
@@ -3426,8 +3534,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Window Resize
-       */
+		 * Handle Window Resize
+		 */
 
     }, {
       key: "_handleWindowResize",
@@ -3438,9 +3546,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Window Resize
-       * @param {Event} e
-       */
+		 * Handle Window Resize
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleWindowEscape",
@@ -3452,8 +3562,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Find ancestors with overflow: hidden; and make visible
-       */
+		 * Find ancestors with overflow: hidden; and make visible
+		 */
 
     }, {
       key: "_makeAncestorsOverflowVisible",
@@ -3475,8 +3585,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animate image in
-       */
+		 * Animate image in
+		 */
 
     }, {
       key: "_animateImageIn",
@@ -3515,8 +3625,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animate image out
-       */
+		 * Animate image out
+		 */
 
     }, {
       key: "_animateImageOut",
@@ -3571,8 +3681,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Update open and close vars
-       */
+		 * Update open and close vars
+		 */
 
     }, {
       key: "_updateVars",
@@ -3583,8 +3693,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Open Materialbox
-       */
+		 * Open Materialbox
+		 */
 
     }, {
       key: "open",
@@ -3715,8 +3825,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Close Materialbox
-       */
+		 * Close Materialbox
+		 */
 
     }, {
       key: "close",
@@ -3776,8 +3886,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -3819,10 +3929,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this21.el.M_Parallax = _this21;
 
       /**
-       * Options for the Parallax
-       * @member Parallax#options
-       * @prop {Number} responsiveThreshold
-       */
+		 * Options for the Parallax
+		 * 
+		 * @member Parallax#options
+		 * @prop {Number} responsiveThreshold
+		 */
       _this21.options = $.extend({}, Parallax.defaults, options);
       _this21._enabled = window.innerWidth > _this21.options.responsiveThreshold;
 
@@ -3845,8 +3956,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         Parallax._parallaxes.splice(Parallax._parallaxes.indexOf(this), 1);
         this.$img[0].style.transform = '';
@@ -3915,8 +4026,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -3951,9 +4062,9 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   /**
-   * @static
-   * @memberof Parallax
-   */
+	 * @static
+	 * @memberof Parallax
+	 */
 
 
   Parallax._parallaxes = [];
@@ -3975,19 +4086,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Tabs = function (_Component6) {
     _inherits(Tabs, _Component6);
 
     /**
-     * Construct Tabs instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Tabs instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Tabs(el, options) {
       _classCallCheck(this, Tabs);
 
@@ -3996,13 +4110,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this22.el.M_Tabs = _this22;
 
       /**
-       * Options for the Tabs
-       * @member Tabs#options
-       * @prop {Number} duration
-       * @prop {Function} onShow
-       * @prop {Boolean} swipeable
-       * @prop {Number} responsiveThreshold
-       */
+		 * Options for the Tabs
+		 * 
+		 * @member Tabs#options
+		 * @prop {Number} duration
+		 * @prop {Function} onShow
+		 * @prop {Boolean} swipeable
+		 * @prop {Number} responsiveThreshold
+		 */
       _this22.options = $.extend({}, Tabs.defaults, options);
 
       // Setup
@@ -4030,8 +4145,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this._indicator.parentNode.removeChild(this._indicator);
@@ -4046,8 +4161,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -4060,8 +4175,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -4071,8 +4186,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle window Resize
-       */
+		 * Handle window Resize
+		 */
 
     }, {
       key: "_handleWindowResize",
@@ -4086,9 +4201,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle tab click
-       * @param {Event} e
-       */
+		 * Handle tab click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleTabClick",
@@ -4162,8 +4279,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Generate elements for tab indicator.
-       */
+		 * Generate elements for tab indicator.
+		 */
 
     }, {
       key: "_createIndicator",
@@ -4183,16 +4300,18 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup first active tab link.
-       */
+		 * Setup first active tab link.
+		 */
 
     }, {
       key: "_setupActiveTabLink",
       value: function _setupActiveTabLink() {
-        // If the location.hash matches one of the links, use that as the active tab.
+        // If the location.hash matches one of the links, use that as the active
+		// tab.
         this.$activeTabLink = $(this.$tabLinks.filter('[href="' + location.hash + '"]'));
 
-        // If no match is found, use the first link or any with class 'active' as the initial active tab.
+        // If no match is found, use the first link or any with class 'active'
+		// as the initial active tab.
         if (this.$activeTabLink.length === 0) {
           this.$activeTabLink = this.$el.children('li.tab').children('a.active').first();
         }
@@ -4212,8 +4331,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup swipeable tabs
-       */
+		 * Setup swipeable tabs
+		 */
 
     }, {
       key: "_setupSwipeableTabs",
@@ -4261,8 +4380,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Teardown normal tabs.
-       */
+		 * Teardown normal tabs.
+		 */
 
     }, {
       key: "_teardownSwipeableTabs",
@@ -4276,8 +4395,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup normal tabs.
-       */
+		 * Setup normal tabs.
+		 */
 
     }, {
       key: "_setupNormalTabs",
@@ -4294,8 +4413,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Teardown normal tabs.
-       */
+		 * Teardown normal tabs.
+		 */
 
     }, {
       key: "_teardownNormalTabs",
@@ -4312,8 +4431,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * set tabs and tab width
-       */
+		 * set tabs and tab width
+		 */
 
     }, {
       key: "_setTabsAndTabWidth",
@@ -4323,9 +4442,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Finds right attribute for indicator based on active tab.
-       * @param {cash} el
-       */
+		 * Finds right attribute for indicator based on active tab.
+		 * 
+		 * @param {cash}
+		 *            el
+		 */
 
     }, {
       key: "_calcRightPos",
@@ -4334,9 +4455,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Finds left attribute for indicator based on active tab.
-       * @param {cash} el
-       */
+		 * Finds left attribute for indicator based on active tab.
+		 * 
+		 * @param {cash}
+		 *            el
+		 */
 
     }, {
       key: "_calcLeftPos",
@@ -4351,9 +4474,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animates Indicator to active tab.
-       * @param {Number} prevIndex
-       */
+		 * Animates Indicator to active tab.
+		 * 
+		 * @param {Number}
+		 *            prevIndex
+		 */
 
     }, {
       key: "_animateIndicator",
@@ -4386,9 +4511,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Select tab.
-       * @param {String} tabId
-       */
+		 * Select tab.
+		 * 
+		 * @param {String}
+		 *            tabId
+		 */
 
     }, {
       key: "select",
@@ -4405,8 +4532,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -4445,19 +4572,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Tooltip = function (_Component7) {
     _inherits(Tooltip, _Component7);
 
     /**
-     * Construct Tooltip instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Tooltip instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Tooltip(el, options) {
       _classCallCheck(this, Tooltip);
 
@@ -4479,8 +4609,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         $(this.tooltipEl).remove();
         this._removeEventHandlers();
@@ -4530,7 +4660,8 @@ $jscomp.polyfill = function (e, r, p, m) {
         if (this.isOpen) {
           return;
         }
-        isManual = isManual === undefined ? true : undefined; // Default value true
+        isManual = isManual === undefined ? true : undefined; // Default value
+																// true
         this.isOpen = true;
         // Update tooltip content with HTML attribute options
         this.options = $.extend({}, this.options, this._getAttributeOptions());
@@ -4551,8 +4682,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Create timeout which delays when the tooltip closes
-       */
+		 * Create timeout which delays when the tooltip closes
+		 */
 
     }, {
       key: "_setExitDelayTimeout",
@@ -4571,8 +4702,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Create timeout which delays when the toast closes
-       */
+		 * Create timeout which delays when the toast closes
+		 */
 
     }, {
       key: "_setEnterDelayTimeout",
@@ -4746,8 +4877,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -4771,14 +4902,12 @@ $jscomp.polyfill = function (e, r, p, m) {
     M.initializeJqueryWrapper(Tooltip, 'tooltip', 'M_Tooltip');
   }
 })(cash, M.anime);
-; /*!
-  * Waves v0.6.4
-  * http://fian.my.id/Waves
-  *
-  * Copyright 2014 Alfiana E. Sibuea and other contributors
-  * Released under the MIT license
-  * https://github.com/fians/Waves/blob/master/LICENSE
-  */
+; /*
+	 * ! Waves v0.6.4 http://fian.my.id/Waves
+	 * 
+	 * Copyright 2014 Alfiana E. Sibuea and other contributors Released under
+	 * the MIT license https://github.com/fians/Waves/blob/master/LICENSE
+	 */
 
 ;(function (window) {
   'use strict';
@@ -4988,23 +5117,24 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * Disable mousedown event for 500ms during and after touch
-   */
+	 * Disable mousedown event for 500ms during and after touch
+	 */
   var TouchHandler = {
-    /* uses an integer rather than bool so there's no issues with
-     * needing to clear timeouts if another touch event occurred
-     * within the 500ms. Cannot mouseup between touchstart and
-     * touchend, nor in the 500ms after touchend. */
+    /*
+	 * uses an integer rather than bool so there's no issues with needing to
+	 * clear timeouts if another touch event occurred within the 500ms. Cannot
+	 * mouseup between touchstart and touchend, nor in the 500ms after touchend.
+	 */
     touches: 0,
     allowEvent: function (e) {
       var allow = true;
 
       if (e.type === 'touchstart') {
-        TouchHandler.touches += 1; //push
+        TouchHandler.touches += 1; // push
       } else if (e.type === 'touchend' || e.type === 'touchcancel') {
         setTimeout(function () {
           if (TouchHandler.touches > 0) {
-            TouchHandler.touches -= 1; //pop after 500ms
+            TouchHandler.touches -= 1; // pop after 500ms
           }
         }, 500);
       } else if (e.type === 'mousedown' && TouchHandler.touches > 0) {
@@ -5019,9 +5149,9 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * Delegated click handler for .waves-effect element.
-   * returns null when .waves-effect element not in "click tree"
-   */
+	 * Delegated click handler for .waves-effect element. returns null when
+	 * .waves-effect element not in "click tree"
+	 */
   function getWavesEffectElement(e) {
     if (TouchHandler.allowEvent(e) === false) {
       return null;
@@ -5041,8 +5171,8 @@ $jscomp.polyfill = function (e, r, p, m) {
   }
 
   /**
-   * Bubble the click and show effect if .waves-effect elem was found
-   */
+	 * Bubble the click and show effect if .waves-effect elem was found
+	 */
   function showEffect(e) {
     var element = getWavesEffectElement(e);
 
@@ -5067,7 +5197,7 @@ $jscomp.polyfill = function (e, r, p, m) {
       Effect.duration = options.duration;
     }
 
-    //Wrap input inside <i> tag
+    // Wrap input inside <i> tag
     Effect.wrapInput($$('.waves-effect'));
 
     if ('ontouchstart' in window) {
@@ -5078,13 +5208,12 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * Attach Waves to an input element (or any element which doesn't
-   * bubble mouseup/mousedown events).
-   *   Intended to be used with dynamically loaded forms/inputs, or
-   * where the user doesn't want a delegated click handler.
-   */
+	 * Attach Waves to an input element (or any element which doesn't bubble
+	 * mouseup/mousedown events). Intended to be used with dynamically loaded
+	 * forms/inputs, or where the user doesn't want a delegated click handler.
+	 */
   Waves.attach = function (element) {
-    //FUTURE: automatically add waves classes and allow users
+    // FUTURE: automatically add waves classes and allow users
     // to specify them with an options param? Eg. light/classic/button
     if (element.tagName.toLowerCase() === 'input') {
       Effect.wrapInput([element]);
@@ -5122,21 +5251,23 @@ $jscomp.polyfill = function (e, r, p, m) {
       _classCallCheck(this, Toast);
 
       /**
-       * Options for the toast
-       * @member Toast#options
-       */
+		 * Options for the toast
+		 * 
+		 * @member Toast#options
+		 */
       this.options = $.extend({}, Toast.defaults, options);
       this.message = this.options.html;
 
       /**
-       * Describes current pan state toast
-       * @type {Boolean}
-       */
+		 * Describes current pan state toast
+		 * 
+		 * @type {Boolean}
+		 */
       this.panning = false;
 
       /**
-       * Time remaining until toast is removed
-       */
+		 * Time remaining until toast is removed
+		 */
       this.timeRemaining = this.options.displayLength;
 
       if (Toast._toasts.length === 0) {
@@ -5158,8 +5289,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Create toast and append it to toast container
-       */
+		 * Create toast and append it to toast container
+		 */
       value: function _createToast() {
         var toast = document.createElement('div');
         toast.classList.add('toast');
@@ -5188,8 +5319,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animate in toast
-       */
+		 * Animate in toast
+		 */
 
     }, {
       key: "_animateIn",
@@ -5205,9 +5336,9 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Create setInterval which automatically removes toast when timeRemaining >= 0
-       * has been reached
-       */
+		 * Create setInterval which automatically removes toast when
+		 * timeRemaining >= 0 has been reached
+		 */
 
     }, {
       key: "_setTimer",
@@ -5230,8 +5361,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Dismiss toast with animation
-       */
+		 * Dismiss toast with animation
+		 */
 
     }, {
       key: "dismiss",
@@ -5272,16 +5403,16 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
       value: function getInstance(el) {
         var domElem = !!el.jquery ? el[0] : el;
         return domElem.M_Toast;
       }
 
       /**
-       * Append toast container and add event handlers
-       */
+		 * Append toast container and add event handlers
+		 */
 
     }, {
       key: "_createContainer",
@@ -5303,8 +5434,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove toast container and event handlers
-       */
+		 * Remove toast container and event handlers
+		 */
 
     }, {
       key: "_removeContainer",
@@ -5318,9 +5449,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Begin drag handler
-       * @param {Event} e
-       */
+		 * Begin drag handler
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_onDragStart",
@@ -5339,9 +5472,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Drag move handler
-       * @param {Event} e
-       */
+		 * Drag move handler
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_onDragMove",
@@ -5362,8 +5497,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * End drag handler
-       */
+		 * End drag handler
+		 */
 
     }, {
       key: "_onDragEnd",
@@ -5393,9 +5528,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get x position of mouse or touch event
-       * @param {Event} e
-       */
+		 * Get x position of mouse or touch event
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_xPos",
@@ -5408,8 +5545,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove all toasts
-       */
+		 * Remove all toasts
+		 */
 
     }, {
       key: "dismissAll",
@@ -5429,25 +5566,25 @@ $jscomp.polyfill = function (e, r, p, m) {
   }();
 
   /**
-   * @static
-   * @memberof Toast
-   * @type {Array.<Toast>}
-   */
+	 * @static
+	 * @memberof Toast
+	 * @type {Array.<Toast>}
+	 */
 
 
   Toast._toasts = [];
 
   /**
-   * @static
-   * @memberof Toast
-   */
+	 * @static
+	 * @memberof Toast
+	 */
   Toast._container = null;
 
   /**
-   * @static
-   * @memberof Toast
-   * @type {Toast}
-   */
+	 * @static
+	 * @memberof Toast
+	 * @type {Toast}
+	 */
   Toast._draggedToast = null;
 
   M.Toast = Toast;
@@ -5471,18 +5608,21 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   */
+	 * @class
+	 */
 
   var Sidenav = function (_Component8) {
     _inherits(Sidenav, _Component8);
 
     /**
-     * Construct Sidenav instance and set up overlay
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Sidenav instance and set up overlay
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Sidenav(el, options) {
       _classCallCheck(this, Sidenav);
 
@@ -5492,35 +5632,45 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this31.id = _this31.$el.attr('id');
 
       /**
-       * Options for the Sidenav
-       * @member Sidenav#options
-       * @prop {String} [edge='left'] - Side of screen on which Sidenav appears
-       * @prop {Boolean} [draggable=true] - Allow swipe gestures to open/close Sidenav
-       * @prop {Number} [inDuration=250] - Length in ms of enter transition
-       * @prop {Number} [outDuration=200] - Length in ms of exit transition
-       * @prop {Function} onOpenStart - Function called when sidenav starts entering
-       * @prop {Function} onOpenEnd - Function called when sidenav finishes entering
-       * @prop {Function} onCloseStart - Function called when sidenav starts exiting
-       * @prop {Function} onCloseEnd - Function called when sidenav finishes exiting
-       */
+		 * Options for the Sidenav
+		 * 
+		 * @member Sidenav#options
+		 * @prop {String} [edge='left'] - Side of screen on which Sidenav
+		 *       appears
+		 * @prop {Boolean} [draggable=true] - Allow swipe gestures to open/close
+		 *       Sidenav
+		 * @prop {Number} [inDuration=250] - Length in ms of enter transition
+		 * @prop {Number} [outDuration=200] - Length in ms of exit transition
+		 * @prop {Function} onOpenStart - Function called when sidenav starts
+		 *       entering
+		 * @prop {Function} onOpenEnd - Function called when sidenav finishes
+		 *       entering
+		 * @prop {Function} onCloseStart - Function called when sidenav starts
+		 *       exiting
+		 * @prop {Function} onCloseEnd - Function called when sidenav finishes
+		 *       exiting
+		 */
       _this31.options = $.extend({}, Sidenav.defaults, options);
 
       /**
-       * Describes open/close state of Sidenav
-       * @type {Boolean}
-       */
+		 * Describes open/close state of Sidenav
+		 * 
+		 * @type {Boolean}
+		 */
       _this31.isOpen = false;
 
       /**
-       * Describes if Sidenav is fixed
-       * @type {Boolean}
-       */
+		 * Describes if Sidenav is fixed
+		 * 
+		 * @type {Boolean}
+		 */
       _this31.isFixed = _this31.el.classList.contains('sidenav-fixed');
 
       /**
-       * Describes if Sidenav is being draggeed
-       * @type {Boolean}
-       */
+		 * Describes if Sidenav is being draggeed
+		 * 
+		 * @type {Boolean}
+		 */
       _this31.isDragged = false;
 
       // Window size variables for window resize checks
@@ -5542,8 +5692,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this._enableBodyScrolling();
@@ -5618,9 +5768,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Trigger Click
-       * @param {Event} e
-       */
+		 * Handle Trigger Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleTriggerClick",
@@ -5638,10 +5790,12 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Set variables needed at the beggining of drag
-       * and stop any current transition.
-       * @param {Event} e
-       */
+		 * Set variables needed at the beggining of drag and stop any current
+		 * transition.
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_startDrag",
@@ -5660,9 +5814,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Set variables needed at each drag move update tick
-       * @param {Event} e
-       */
+		 * Set variables needed at each drag move update tick
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_dragMoveUpdate",
@@ -5679,9 +5835,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handles Dragging of Sidenav
-       * @param {Event} e
-       */
+		 * Handles Dragging of Sidenav
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleDragTargetDrag",
@@ -5705,17 +5863,17 @@ $jscomp.polyfill = function (e, r, p, m) {
         // dragDirection is the attempted user drag direction
         var dragDirection = totalDeltaX > 0 ? 'right' : 'left';
 
-        // Don't allow totalDeltaX to exceed Sidenav width or be dragged in the opposite direction
+        // Don't allow totalDeltaX to exceed Sidenav width or be dragged in the
+		// opposite direction
         totalDeltaX = Math.min(this._width, Math.abs(totalDeltaX));
         if (this.options.edge === dragDirection) {
           totalDeltaX = 0;
         }
 
         /**
-         * transformX is the drag displacement
-         * transformPrefix is the initial transform placement
-         * Invert values if Sidenav is right edge
-         */
+		 * transformX is the drag displacement transformPrefix is the initial
+		 * transform placement Invert values if Sidenav is right edge
+		 */
         var transformX = totalDeltaX;
         var transformPrefix = 'translateX(-100%)';
         if (this.options.edge === 'right') {
@@ -5723,7 +5881,8 @@ $jscomp.polyfill = function (e, r, p, m) {
           transformX = -transformX;
         }
 
-        // Calculate open/close percentage of sidenav, with open = 1 and close = 0
+        // Calculate open/close percentage of sidenav, with open = 1 and close =
+		// 0
         this.percentOpen = Math.min(1, totalDeltaX / this._width);
 
         // Set transform and opacity styles
@@ -5732,8 +5891,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Drag Target Release
-       */
+		 * Handle Drag Target Release
+		 */
 
     }, {
       key: "_handleDragTargetRelease",
@@ -5751,9 +5910,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Close Drag
-       * @param {Event} e
-       */
+		 * Handle Close Drag
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleCloseDrag",
@@ -5778,7 +5939,8 @@ $jscomp.polyfill = function (e, r, p, m) {
           // dragDirection is the attempted user drag direction
           var dragDirection = totalDeltaX > 0 ? 'right' : 'left';
 
-          // Don't allow totalDeltaX to exceed Sidenav width or be dragged in the opposite direction
+          // Don't allow totalDeltaX to exceed Sidenav width or be dragged in
+			// the opposite direction
           totalDeltaX = Math.min(this._width, Math.abs(totalDeltaX));
           if (this.options.edge !== dragDirection) {
             totalDeltaX = 0;
@@ -5789,7 +5951,8 @@ $jscomp.polyfill = function (e, r, p, m) {
             transformX = -transformX;
           }
 
-          // Calculate open/close percentage of sidenav, with open = 1 and close = 0
+          // Calculate open/close percentage of sidenav, with open = 1 and
+			// close = 0
           this.percentOpen = Math.min(1, 1 - totalDeltaX / this._width);
 
           // Set transform and opacity styles
@@ -5799,8 +5962,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Close Release
-       */
+		 * Handle Close Release
+		 */
 
     }, {
       key: "_handleCloseRelease",
@@ -5818,8 +5981,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handles closing of Sidenav when element with class .sidenav-close
-       */
+		 * Handles closing of Sidenav when element with class .sidenav-close
+		 */
 
     }, {
       key: "_handleCloseTriggerClick",
@@ -5831,8 +5994,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Window Resize
-       */
+		 * Handle Window Resize
+		 */
 
     }, {
       key: "_handleWindowResize",
@@ -6066,8 +6229,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -6086,10 +6249,10 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   /**
-   * @static
-   * @memberof Sidenav
-   * @type {Array.<Sidenav>}
-   */
+	 * @static
+	 * @memberof Sidenav
+	 * @type {Array.<Sidenav>}
+	 */
 
 
   Sidenav._sidenavs = [];
@@ -6105,7 +6268,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
   var _defaults = {
     throttle: 100,
-    scrollOffset: 200, // offset - 200 allows elements near bottom of page to scroll
+    scrollOffset: 200, // offset - 200 allows elements near bottom of page to
+						// scroll
     activeClass: 'active',
     getActiveElement: function (id) {
       return 'a[href="#' + id + '"]';
@@ -6113,19 +6277,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var ScrollSpy = function (_Component9) {
     _inherits(ScrollSpy, _Component9);
 
     /**
-     * Construct ScrollSpy instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct ScrollSpy instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function ScrollSpy(el, options) {
       _classCallCheck(this, ScrollSpy);
 
@@ -6134,13 +6301,16 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this35.el.M_ScrollSpy = _this35;
 
       /**
-       * Options for the modal
-       * @member Modal#options
-       * @prop {Number} [throttle=100] - Throttle of scroll handler
-       * @prop {Number} [scrollOffset=200] - Offset for centering element when scrolled to
-       * @prop {String} [activeClass='active'] - Class applied to active elements
-       * @prop {Function} [getActiveElement] - Used to find active element
-       */
+		 * Options for the modal
+		 * 
+		 * @member Modal#options
+		 * @prop {Number} [throttle=100] - Throttle of scroll handler
+		 * @prop {Number} [scrollOffset=200] - Offset for centering element when
+		 *       scrolled to
+		 * @prop {String} [activeClass='active'] - Class applied to active
+		 *       elements
+		 * @prop {Function} [getActiveElement] - Used to find active element
+		 */
       _this35.options = $.extend({}, ScrollSpy.defaults, options);
 
       // setup
@@ -6159,8 +6329,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         ScrollSpy._elements.splice(ScrollSpy._elements.indexOf(this), 1);
         ScrollSpy._elementsInView.splice(ScrollSpy._elementsInView.indexOf(this), 1);
@@ -6172,8 +6342,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -6189,8 +6359,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -6203,9 +6373,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Trigger Click
-       * @param {Event} e
-       */
+		 * Handle Trigger Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleTriggerClick",
@@ -6229,8 +6401,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Window Scroll
-       */
+		 * Handle Window Scroll
+		 */
 
     }, {
       key: "_handleWindowScroll",
@@ -6273,13 +6445,18 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Find elements that are within the boundary
-       * @param {number} top
-       * @param {number} right
-       * @param {number} bottom
-       * @param {number} left
-       * @return {Array.<ScrollSpy>}   A collection of elements
-       */
+		 * Find elements that are within the boundary
+		 * 
+		 * @param {number}
+		 *            top
+		 * @param {number}
+		 *            right
+		 * @param {number}
+		 *            bottom
+		 * @param {number}
+		 *            left
+		 * @return {Array.<ScrollSpy>} A collection of elements
+		 */
 
     }, {
       key: "_enter",
@@ -6329,8 +6506,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -6372,44 +6549,44 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   /**
-   * @static
-   * @memberof ScrollSpy
-   * @type {Array.<ScrollSpy>}
-   */
+	 * @static
+	 * @memberof ScrollSpy
+	 * @type {Array.<ScrollSpy>}
+	 */
 
 
   ScrollSpy._elements = [];
 
   /**
-   * @static
-   * @memberof ScrollSpy
-   * @type {Array.<ScrollSpy>}
-   */
+	 * @static
+	 * @memberof ScrollSpy
+	 * @type {Array.<ScrollSpy>}
+	 */
   ScrollSpy._elementsInView = [];
 
   /**
-   * @static
-   * @memberof ScrollSpy
-   * @type {Array.<cash>}
-   */
+	 * @static
+	 * @memberof ScrollSpy
+	 * @type {Array.<cash>}
+	 */
   ScrollSpy._visibleElements = [];
 
   /**
-   * @static
-   * @memberof ScrollSpy
-   */
+	 * @static
+	 * @memberof ScrollSpy
+	 */
   ScrollSpy._count = 0;
 
   /**
-   * @static
-   * @memberof ScrollSpy
-   */
+	 * @static
+	 * @memberof ScrollSpy
+	 */
   ScrollSpy._increment = 0;
 
   /**
-   * @static
-   * @memberof ScrollSpy
-   */
+	 * @static
+	 * @memberof ScrollSpy
+	 */
   ScrollSpy._ticks = 0;
 
   M.ScrollSpy = ScrollSpy;
@@ -6433,19 +6610,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Autocomplete = function (_Component10) {
     _inherits(Autocomplete, _Component10);
 
     /**
-     * Construct Autocomplete instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Autocomplete instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Autocomplete(el, options) {
       _classCallCheck(this, Autocomplete);
 
@@ -6454,17 +6634,18 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this37.el.M_Autocomplete = _this37;
 
       /**
-       * Options for the autocomplete
-       * @member Autocomplete#options
-       * @prop {Number} duration
-       * @prop {Number} dist
-       * @prop {number} shift
-       * @prop {number} padding
-       * @prop {Boolean} fullWidth
-       * @prop {Boolean} indicators
-       * @prop {Boolean} noWrap
-       * @prop {Function} onCycleTo
-       */
+		 * Options for the autocomplete
+		 * 
+		 * @member Autocomplete#options
+		 * @prop {Number} duration
+		 * @prop {Number} dist
+		 * @prop {number} shift
+		 * @prop {number} padding
+		 * @prop {Boolean} fullWidth
+		 * @prop {Boolean} indicators
+		 * @prop {Boolean} noWrap
+		 * @prop {Function} onCycleTo
+		 */
       _this37.options = $.extend({}, Autocomplete.defaults, options);
 
       // Setup
@@ -6486,8 +6667,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this._removeDropdown();
@@ -6495,8 +6676,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -6523,8 +6704,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -6544,8 +6725,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup dropdown
-       */
+		 * Setup dropdown
+		 */
 
     }, {
       key: "_setupDropdown",
@@ -6572,8 +6753,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove dropdown
-       */
+		 * Remove dropdown
+		 */
 
     }, {
       key: "_removeDropdown",
@@ -6582,8 +6763,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Input Blur
-       */
+		 * Handle Input Blur
+		 */
 
     }, {
       key: "_handleInputBlur",
@@ -6595,9 +6776,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Input Keyup and Focus
-       * @param {Event} e
-       */
+		 * Handle Input Keyup and Focus
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleInputKeyupAndFocus",
@@ -6625,9 +6808,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Input Keydown
-       * @param {Event} e
-       */
+		 * Handle Input Keydown
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleInputKeydown",
@@ -6670,9 +6855,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Input Click
-       * @param {Event} e
-       */
+		 * Handle Input Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleInputClick",
@@ -6681,9 +6868,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Container Mousedown and Touchstart
-       * @param {Event} e
-       */
+		 * Handle Container Mousedown and Touchstart
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleContainerMousedownAndTouchstart",
@@ -6692,9 +6881,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Container Mouseup and Touchend
-       * @param {Event} e
-       */
+		 * Handle Container Mouseup and Touchend
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleContainerMouseupAndTouchend",
@@ -6703,8 +6894,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Highlight partial match
-       */
+		 * Highlight partial match
+		 */
 
     }, {
       key: "_highlight",
@@ -6722,8 +6913,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Reset current element position
-       */
+		 * Reset current element position
+		 */
 
     }, {
       key: "_resetCurrentElement",
@@ -6733,8 +6924,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Reset autocomplete elements
-       */
+		 * Reset autocomplete elements
+		 */
 
     }, {
       key: "_resetAutocomplete",
@@ -6747,9 +6938,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Select autocomplete option
-       * @param {Element} el  Autocomplete option list item element
-       */
+		 * Select autocomplete option
+		 * 
+		 * @param {Element}
+		 *            el Autocomplete option list item element
+		 */
 
     }, {
       key: "selectOption",
@@ -6767,10 +6960,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Render dropdown content
-       * @param {Object} data  data set
-       * @param {String} val  current input value
-       */
+		 * Render dropdown content
+		 * 
+		 * @param {Object}
+		 *            data data set
+		 * @param {String}
+		 *            val current input value
+		 */
 
     }, {
       key: "_renderDropdown",
@@ -6823,8 +7019,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Open Autocomplete Dropdown
-       */
+		 * Open Autocomplete Dropdown
+		 */
 
     }, {
       key: "open",
@@ -6848,8 +7044,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Close Autocomplete Dropdown
-       */
+		 * Close Autocomplete Dropdown
+		 */
 
     }, {
       key: "close",
@@ -6858,9 +7054,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Update Data
-       * @param {Object} data
-       */
+		 * Update Data
+		 * 
+		 * @param {Object}
+		 *            data
+		 */
 
     }, {
       key: "updateData",
@@ -6879,8 +7077,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -6899,9 +7097,9 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   /**
-   * @static
-   * @memberof Autocomplete
-   */
+	 * @static
+	 * @memberof Autocomplete
+	 */
 
 
   Autocomplete._keydown = false;
@@ -7026,17 +7224,17 @@ $jscomp.polyfill = function (e, r, p, m) {
     }
 
     /**
-     * Resize if the new height is greater than the
-     * original height of the textarea
-     */
+	 * Resize if the new height is greater than the original height of the
+	 * textarea
+	 */
     if ($textarea.data('original-height') <= hiddenDiv.innerHeight()) {
       $textarea.css('height', hiddenDiv.innerHeight() + 'px');
     } else if ($textarea[0].value.length < $textarea.data('previous-length')) {
       /**
-       * In case the new height is less than original height, it
-       * means the textarea has less text than before
-       * So we set the height to the original one
-       */
+		 * In case the new height is less than original height, it means the
+		 * textarea has less text than before So we set the height to the
+		 * original one
+		 */
       $textarea.css('height', $textarea.data('original-height') + 'px');
     }
     $textarea.data('previous-length', $textarea[0].value.length);
@@ -7083,9 +7281,11 @@ $jscomp.polyfill = function (e, r, p, m) {
     });
 
     /**
-     * Add active when element has focus
-     * @param {Event} e
-     */
+	 * Add active when element has focus
+	 * 
+	 * @param {Event}
+	 *            e
+	 */
     document.addEventListener('focus', function (e) {
       if ($(e.target).is(input_selector)) {
         $(e.target).siblings('label, .prefix').addClass('active');
@@ -7093,9 +7293,11 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, true);
 
     /**
-     * Remove active when element is blurred
-     * @param {Event} e
-     */
+	 * Remove active when element is blurred
+	 * 
+	 * @param {Event}
+	 *            e
+	 */
     document.addEventListener('blur', function (e) {
       var $inputElement = $(e.target);
       if ($inputElement.is(input_selector)) {
@@ -7127,9 +7329,9 @@ $jscomp.polyfill = function (e, r, p, m) {
     $(text_area_selector).each(function () {
       var $textarea = $(this);
       /**
-       * Resize textarea on document load after storing
-       * the original height and the original length
-       */
+		 * Resize textarea on document load after storing the original height
+		 * and the original length
+		 */
       $textarea.data('original-height', $textarea.height());
       $textarea.data('previous-length', this.value.length);
       M.textareaAutoResize($textarea);
@@ -7167,19 +7369,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Slider = function (_Component11) {
     _inherits(Slider, _Component11);
 
     /**
-     * Construct Slider instance and set up overlay
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Slider instance and set up overlay
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Slider(el, options) {
       _classCallCheck(this, Slider);
 
@@ -7188,13 +7393,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this40.el.M_Slider = _this40;
 
       /**
-       * Options for the modal
-       * @member Slider#options
-       * @prop {Boolean} [indicators=true] - Show indicators
-       * @prop {Number} [height=400] - height of slider
-       * @prop {Number} [duration=500] - Length in ms of slide transition
-       * @prop {Number} [interval=6000] - Length in ms of slide interval
-       */
+		 * Options for the modal
+		 * 
+		 * @member Slider#options
+		 * @prop {Boolean} [indicators=true] - Show indicators
+		 * @prop {Number} [height=400] - height of slider
+		 * @prop {Number} [duration=500] - Length in ms of slide transition
+		 * @prop {Number} [interval=6000] - Length in ms of slide interval
+		 */
       _this40.options = $.extend({}, Slider.defaults, options);
 
       // setup
@@ -7270,8 +7476,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this.pause();
         this._removeIndicators();
@@ -7280,8 +7486,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -7299,8 +7505,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -7315,9 +7521,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle indicator click
-       * @param {Event} e
-       */
+		 * Handle indicator click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleIndicatorClick",
@@ -7327,8 +7535,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Interval
-       */
+		 * Handle Interval
+		 */
 
     }, {
       key: "_handleInterval",
@@ -7342,10 +7550,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Animate in caption
-       * @param {Element} caption
-       * @param {Number} duration
-       */
+		 * Animate in caption
+		 * 
+		 * @param {Element}
+		 *            caption
+		 * @param {Number}
+		 *            duration
+		 */
 
     }, {
       key: "_animateCaptionIn",
@@ -7369,8 +7580,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Set height of slider
-       */
+		 * Set height of slider
+		 */
 
     }, {
       key: "_setSliderHeight",
@@ -7388,8 +7599,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup indicators
-       */
+		 * Setup indicators
+		 */
 
     }, {
       key: "_setupIndicators",
@@ -7408,8 +7619,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove indicators
-       */
+		 * Remove indicators
+		 */
 
     }, {
       key: "_removeIndicators",
@@ -7418,9 +7629,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Cycle to nth item
-       * @param {Number} index
-       */
+		 * Cycle to nth item
+		 * 
+		 * @param {Number}
+		 *            index
+		 */
 
     }, {
       key: "set",
@@ -7489,8 +7702,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Pause slider interval
-       */
+		 * Pause slider interval
+		 */
 
     }, {
       key: "pause",
@@ -7499,8 +7712,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Start slider interval
-       */
+		 * Start slider interval
+		 */
 
     }, {
       key: "start",
@@ -7510,8 +7723,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Move to next slide
-       */
+		 * Move to next slide
+		 */
 
     }, {
       key: "next",
@@ -7525,8 +7738,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Move to previous slide
-       */
+		 * Move to previous slide
+		 */
 
     }, {
       key: "prev",
@@ -7545,8 +7758,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -7619,25 +7832,28 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @typedef {Object} chip
-   * @property {String} tag  chip tag string
-   * @property {String} [image]  chip avatar image string
-   */
+	 * @typedef {Object} chip
+	 * @property {String} tag chip tag string
+	 * @property {String} [image] chip avatar image string
+	 */
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Chips = function (_Component12) {
     _inherits(Chips, _Component12);
 
     /**
-     * Construct Chips instance and set up overlay
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Chips instance and set up overlay
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Chips(el, options) {
       _classCallCheck(this, Chips);
 
@@ -7646,13 +7862,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this45.el.M_Chips = _this45;
 
       /**
-       * Options for the modal
-       * @member Chips#options
-       * @prop {Array} data
-       * @prop {String} placeholder
-       * @prop {String} secondaryPlaceholder
-       * @prop {Object} autocompleteOptions
-       */
+		 * Options for the modal
+		 * 
+		 * @member Chips#options
+		 * @prop {Array} data
+		 * @prop {String} placeholder
+		 * @prop {String} secondaryPlaceholder
+		 * @prop {Object} autocompleteOptions
+		 */
       _this45.options = $.extend({}, Chips.defaults, options);
 
       _this45.$el.addClass('chips input-field');
@@ -7688,15 +7905,15 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Get Chips Data
-       */
+		 * Get Chips Data
+		 */
       value: function getData() {
         return this.chipsData;
       }
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
 
     }, {
       key: "destroy",
@@ -7707,8 +7924,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -7728,8 +7945,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -7744,9 +7961,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Chip Click
-       * @param {Event} e
-       */
+		 * Handle Chip Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleChipClick",
@@ -7771,24 +7990,26 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Chips Keydown
-       * @param {Event} e
-       */
+		 * Handle Chips Keydown
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleInputFocus",
 
 
       /**
-       * Handle Input Focus
-       */
+		 * Handle Input Focus
+		 */
       value: function _handleInputFocus() {
         this.$el.addClass('focus');
       }
 
       /**
-       * Handle Input Blur
-       */
+		 * Handle Input Blur
+		 */
 
     }, {
       key: "_handleInputBlur",
@@ -7797,9 +8018,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Input Keydown
-       * @param {Event} e
-       */
+		 * Handle Input Keydown
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleInputKeydown",
@@ -7827,10 +8050,12 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Render Chip
-       * @param {chip} chip
-       * @return {Element}
-       */
+		 * Render Chip
+		 * 
+		 * @param {chip}
+		 *            chip
+		 * @return {Element}
+		 */
 
     }, {
       key: "_renderChip",
@@ -7859,8 +8084,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Render Chips
-       */
+		 * Render Chips
+		 */
 
     }, {
       key: "_renderChips",
@@ -7877,8 +8102,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Autocomplete
-       */
+		 * Setup Autocomplete
+		 */
 
     }, {
       key: "_setupAutocomplete",
@@ -7897,8 +8122,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Input
-       */
+		 * Setup Input
+		 */
 
     }, {
       key: "_setupInput",
@@ -7913,8 +8138,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Label
-       */
+		 * Setup Label
+		 */
 
     }, {
       key: "_setupLabel",
@@ -7926,8 +8151,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Set placeholder
-       */
+		 * Set placeholder
+		 */
 
     }, {
       key: "_setPlaceholder",
@@ -7940,9 +8165,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Check if chip is valid
-       * @param {chip} chip
-       */
+		 * Check if chip is valid
+		 * 
+		 * @param {chip}
+		 *            chip
+		 */
 
     }, {
       key: "_isValid",
@@ -7962,9 +8189,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Add chip
-       * @param {chip} chip
-       */
+		 * Add chip
+		 * 
+		 * @param {chip}
+		 *            chip
+		 */
 
     }, {
       key: "addChip",
@@ -7986,9 +8215,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Delete chip
-       * @param {Number} chip
-       */
+		 * Delete chip
+		 * 
+		 * @param {Number}
+		 *            chip
+		 */
 
     }, {
       key: "deleteChip",
@@ -8008,9 +8239,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Select chip
-       * @param {Number} chip
-       */
+		 * Select chip
+		 * 
+		 * @param {Number}
+		 *            chip
+		 */
 
     }, {
       key: "selectChip",
@@ -8031,8 +8264,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -8098,9 +8331,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Chips Keyup
-       * @param {Event} e
-       */
+		 * Handle Chips Keyup
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleChipsKeyup",
@@ -8109,9 +8344,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Chips Blur
-       * @param {Event} e
-       */
+		 * Handle Chips Blur
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleChipsBlur",
@@ -8134,9 +8371,9 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   /**
-   * @static
-   * @memberof Chips
-   */
+	 * @static
+	 * @memberof Chips
+	 */
 
 
   Chips._keydown = false;
@@ -8169,19 +8406,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Pushpin = function (_Component13) {
     _inherits(Pushpin, _Component13);
 
     /**
-     * Construct Pushpin instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Pushpin instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Pushpin(el, options) {
       _classCallCheck(this, Pushpin);
 
@@ -8190,9 +8430,10 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this47.el.M_Pushpin = _this47;
 
       /**
-       * Options for the modal
-       * @member Pushpin#options
-       */
+		 * Options for the modal
+		 * 
+		 * @member Pushpin#options
+		 */
       _this47.options = $.extend({}, Pushpin.defaults, options);
 
       _this47.originalOffset = _this47.el.offsetTop;
@@ -8207,8 +8448,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this.el.style.top = null;
         this._removePinClasses();
@@ -8283,8 +8524,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -8311,9 +8552,9 @@ $jscomp.polyfill = function (e, r, p, m) {
   }(Component);
 
   /**
-   * @static
-   * @memberof Pushpin
-   */
+	 * @static
+	 * @memberof Pushpin
+	 */
 
 
   Pushpin._pushpins = [];
@@ -8336,19 +8577,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   $.fn.reverse = [].reverse;
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var FloatingActionButton = function (_Component14) {
     _inherits(FloatingActionButton, _Component14);
 
     /**
-     * Construct FloatingActionButton instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct FloatingActionButton instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function FloatingActionButton(el, options) {
       _classCallCheck(this, FloatingActionButton);
 
@@ -8357,12 +8601,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this48.el.M_FloatingActionButton = _this48;
 
       /**
-       * Options for the fab
-       * @member FloatingActionButton#options
-       * @prop {Boolean} [direction] - Direction fab menu opens
-       * @prop {Boolean} [hoverEnabled=true] - Enable hover vs click
-       * @prop {Boolean} [toolbarEnabled=false] - Enable toolbar transition
-       */
+		 * Options for the fab
+		 * 
+		 * @member FloatingActionButton#options
+		 * @prop {Boolean} [direction] - Direction fab menu opens
+		 * @prop {Boolean} [hoverEnabled=true] - Enable hover vs click
+		 * @prop {Boolean} [toolbarEnabled=false] - Enable toolbar transition
+		 */
       _this48.options = $.extend({}, FloatingActionButton.defaults, options);
 
       _this48.isOpen = false;
@@ -8392,16 +8637,16 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this.el.M_FloatingActionButton = undefined;
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -8419,8 +8664,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -8434,8 +8679,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle FAB Click
-       */
+		 * Handle FAB Click
+		 */
 
     }, {
       key: "_handleFABClick",
@@ -8448,9 +8693,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Document Click
-       * @param {Event} e
-       */
+		 * Handle Document Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleDocumentClick",
@@ -8461,8 +8708,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Open FAB
-       */
+		 * Open FAB
+		 */
 
     }, {
       key: "open",
@@ -8480,8 +8727,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Close FAB
-       */
+		 * Close FAB
+		 */
 
     }, {
       key: "close",
@@ -8501,8 +8748,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Classic FAB Menu open
-       */
+		 * Classic FAB Menu open
+		 */
 
     }, {
       key: "_animateInFAB",
@@ -8528,8 +8775,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Classic FAB Menu close
-       */
+		 * Classic FAB Menu close
+		 */
 
     }, {
       key: "_animateOutFAB",
@@ -8554,8 +8801,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Toolbar transition Menu open
-       */
+		 * Toolbar transition Menu open
+		 */
 
     }, {
       key: "_animateInToolbar",
@@ -8628,8 +8875,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Toolbar transition Menu close
-       */
+		 * Toolbar transition Menu close
+		 */
 
     }, {
       key: "_animateOutToolbar",
@@ -8698,8 +8945,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -8805,19 +9052,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Datepicker = function (_Component15) {
     _inherits(Datepicker, _Component15);
 
     /**
-     * Construct Datepicker instance and set up overlay
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Datepicker instance and set up overlay
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Datepicker(el, options) {
       _classCallCheck(this, Datepicker);
 
@@ -8827,7 +9077,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
       _this53.options = $.extend({}, Datepicker.defaults, options);
 
-      // make sure i18n defaults are not lost when only few i18n option properties are passed
+      // make sure i18n defaults are not lost when only few i18n option
+		// properties are passed
       if (!!options && options.hasOwnProperty('i18n') && typeof options.i18n === 'object') {
         _this53.options.i18n = $.extend({}, Datepicker.defaults.i18n, options.i18n);
       }
@@ -8861,9 +9112,10 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Describes open/close state of datepicker
-       * @type {Boolean}
-       */
+		 * Describes open/close state of datepicker
+		 * 
+		 * @type {Boolean}
+		 */
       _this53.isOpen = false;
       return _this53;
     }
@@ -8873,8 +9125,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this.modal.destroy();
@@ -8997,8 +9249,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * change view to a specific date
-       */
+		 * change view to a specific date
+		 */
 
     }, {
       key: "gotoDate",
@@ -9265,8 +9517,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * refresh the HTML
-       */
+		 * refresh the HTML
+		 */
 
     }, {
       key: "draw",
@@ -9328,8 +9580,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -9409,8 +9661,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -9473,8 +9725,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * change view to a specific month (zero-index, e.g. 0: January)
-       */
+		 * change view to a specific month (zero-index, e.g. 0: January)
+		 */
 
     }, {
       key: "gotoMonth",
@@ -9486,8 +9738,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * change view to a specific full year (e.g. "2012")
-       */
+		 * change view to a specific full year (e.g. "2012")
+		 */
 
     }, {
       key: "gotoYear",
@@ -9527,8 +9779,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Set input value to the selected date and close Datepicker
-       */
+		 * Set input value to the selected date and close Datepicker
+		 */
 
     }, {
       key: "_finishSelection",
@@ -9538,8 +9790,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Open Datepicker
-       */
+		 * Open Datepicker
+		 */
 
     }, {
       key: "open",
@@ -9558,8 +9810,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Close Datepicker
-       */
+		 * Close Datepicker
+		 */
 
     }, {
       key: "close",
@@ -9611,7 +9863,8 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_compareDates",
       value: function _compareDates(a, b) {
-        // weak date comparison (use setToStartOfDay(date) to ensure correct result)
+        // weak date comparison (use setToStartOfDay(date) to ensure correct
+		// result)
         return a.getTime() === b.getTime();
       }
     }, {
@@ -9621,8 +9874,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -9682,9 +9935,9 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Timepicker = function (_Component16) {
     _inherits(Timepicker, _Component16);
@@ -9714,8 +9967,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this.modal.destroy();
@@ -9724,8 +9977,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -10190,8 +10443,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Finish timepicker selection.
-       */
+		 * Finish timepicker selection.
+		 */
 
     }, {
       key: "done",
@@ -10236,16 +10489,18 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * @typedef {Object} Point
-       * @property {number} x The X Coordinate
-       * @property {number} y The Y Coordinate
-       */
+		 * @typedef {Object} Point
+		 * @property {number} x The X Coordinate
+		 * @property {number} y The Y Coordinate
+		 */
 
       /**
-       * Get x position of mouse or touch event
-       * @param {Event} e
-       * @return {Point} x and y location
-       */
+		 * Get x position of mouse or touch event
+		 * 
+		 * @param {Event}
+		 *            e
+		 * @return {Point} x and y location
+		 */
 
     }, {
       key: "_Pos",
@@ -10258,8 +10513,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -10291,19 +10546,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   var _defaults = {};
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var CharacterCounter = function (_Component17) {
     _inherits(CharacterCounter, _Component17);
 
     /**
-     * Construct CharacterCounter instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct CharacterCounter instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function CharacterCounter(el, options) {
       _classCallCheck(this, CharacterCounter);
 
@@ -10312,8 +10570,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this61.el.M_CharacterCounter = _this61;
 
       /**
-       * Options for the character counter
-       */
+		 * Options for the character counter
+		 */
       _this61.options = $.extend({}, CharacterCounter.defaults, options);
 
       _this61.isInvalid = false;
@@ -10328,8 +10586,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this.el.CharacterCounter = undefined;
@@ -10337,8 +10595,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -10350,8 +10608,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -10361,8 +10619,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup counter element
-       */
+		 * Setup counter element
+		 */
 
     }, {
       key: "_setupCounter",
@@ -10378,8 +10636,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove counter element
-       */
+		 * Remove counter element
+		 */
 
     }, {
       key: "_removeCounter",
@@ -10388,8 +10646,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Update counter
-       */
+		 * Update counter
+		 */
 
     }, {
       key: "updateCounter",
@@ -10408,8 +10666,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Add validation classes
-       */
+		 * Add validation classes
+		 */
 
     }, {
       key: "_validateInput",
@@ -10430,8 +10688,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -10471,19 +10729,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Carousel = function (_Component18) {
     _inherits(Carousel, _Component18);
 
     /**
-     * Construct Carousel instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Carousel instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Carousel(el, options) {
       _classCallCheck(this, Carousel);
 
@@ -10492,18 +10753,19 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this62.el.M_Carousel = _this62;
 
       /**
-       * Options for the carousel
-       * @member Carousel#options
-       * @prop {Number} duration
-       * @prop {Number} dist
-       * @prop {Number} shift
-       * @prop {Number} padding
-       * @prop {Number} numVisible
-       * @prop {Boolean} fullWidth
-       * @prop {Boolean} indicators
-       * @prop {Boolean} noWrap
-       * @prop {Function} onCycleTo
-       */
+		 * Options for the carousel
+		 * 
+		 * @member Carousel#options
+		 * @prop {Number} duration
+		 * @prop {Number} dist
+		 * @prop {Number} shift
+		 * @prop {Number} padding
+		 * @prop {Number} numVisible
+		 * @prop {Boolean} fullWidth
+		 * @prop {Boolean} indicators
+		 * @prop {Boolean} noWrap
+		 * @prop {Function} onCycleTo
+		 */
       _this62.options = $.extend({}, Carousel.defaults, options);
 
       // Setup
@@ -10516,7 +10778,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this62.images = [];
       _this62.itemWidth = _this62.$el.find('.carousel-item').first().innerWidth();
       _this62.itemHeight = _this62.$el.find('.carousel-item').first().innerHeight();
-      _this62.dim = _this62.itemWidth * 2 + _this62.options.padding || 1; // Make sure dim is non zero for divisions.
+      _this62.dim = _this62.itemWidth * 2 + _this62.options.padding || 1; // Make
+																			// sure
+																			// dim
+																			// is
+																			// non
+																			// zero
+																			// for
+																			// divisions.
       _this62._autoScrollBound = _this62._autoScroll.bind(_this62);
       _this62._trackBound = _this62._track.bind(_this62);
 
@@ -10575,16 +10844,16 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this.el.M_Carousel = undefined;
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -10623,8 +10892,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -10652,9 +10921,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Carousel Tap
-       * @param {Event} e
-       */
+		 * Handle Carousel Tap
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleCarouselTap",
@@ -10677,9 +10948,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Carousel Drag
-       * @param {Event} e
-       */
+		 * Handle Carousel Drag
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleCarouselDrag",
@@ -10720,9 +10993,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Carousel Release
-       * @param {Event} e
-       */
+		 * Handle Carousel Release
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleCarouselRelease",
@@ -10761,9 +11036,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Carousel CLick
-       * @param {Event} e
-       */
+		 * Handle Carousel CLick
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleCarouselClick",
@@ -10787,9 +11064,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Indicator CLick
-       * @param {Event} e
-       */
+		 * Handle Indicator CLick
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleIndicatorClick",
@@ -10803,9 +11082,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Throttle Resize
-       * @param {Event} e
-       */
+		 * Handle Throttle Resize
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleResize",
@@ -10823,9 +11104,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Set carousel height based on first slide
-       * @param {Booleam} imageOnly - true for image slides
-       */
+		 * Set carousel height based on first slide
+		 * 
+		 * @param {Booleam}
+		 *            imageOnly - true for image slides
+		 */
 
     }, {
       key: "_setCarouselHeight",
@@ -10841,7 +11124,8 @@ $jscomp.polyfill = function (e, r, p, m) {
             if (imageHeight > 0) {
               this.$el.css('height', imageHeight + 'px');
             } else {
-              // If image still has no height, use the natural dimensions to calculate
+              // If image still has no height, use the natural dimensions to
+				// calculate
               var naturalWidth = firstImage[0].naturalWidth;
               var naturalHeight = firstImage[0].naturalHeight;
               var adjustedHeight = this.$el.width() / naturalWidth * naturalHeight;
@@ -10860,9 +11144,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get x position from event
-       * @param {Event} e
-       */
+		 * Get x position from event
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_xpos",
@@ -10877,9 +11163,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get y position from event
-       * @param {Event} e
-       */
+		 * Get y position from event
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_ypos",
@@ -10894,9 +11182,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Wrap index
-       * @param {Number} x
-       */
+		 * Wrap index
+		 * 
+		 * @param {Number}
+		 *            x
+		 */
 
     }, {
       key: "_wrap",
@@ -10905,8 +11195,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Tracks scrolling information
-       */
+		 * Tracks scrolling information
+		 */
 
     }, {
       key: "_track",
@@ -10927,8 +11217,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Auto scrolls to nearest carousel item.
-       */
+		 * Auto scrolls to nearest carousel item.
+		 */
 
     }, {
       key: "_autoScroll",
@@ -10949,9 +11239,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Scroll to target
-       * @param {Number} x
-       */
+		 * Scroll to target
+		 * 
+		 * @param {Number}
+		 *            x
+		 */
 
     }, {
       key: "_scroll",
@@ -11077,12 +11369,17 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Cycle to target
-       * @param {Element} el
-       * @param {Number} opacity
-       * @param {Number} zIndex
-       * @param {String} transform
-       */
+		 * Cycle to target
+		 * 
+		 * @param {Element}
+		 *            el
+		 * @param {Number}
+		 *            opacity
+		 * @param {Number}
+		 *            zIndex
+		 * @param {String}
+		 *            transform
+		 */
 
     }, {
       key: "_updateItemStyle",
@@ -11094,10 +11391,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Cycle to target
-       * @param {Number} n
-       * @param {Function} callback
-       */
+		 * Cycle to target
+		 * 
+		 * @param {Number}
+		 *            n
+		 * @param {Function}
+		 *            callback
+		 */
 
     }, {
       key: "_cycleTo",
@@ -11141,9 +11441,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Cycle to next item
-       * @param {Number} [n]
-       */
+		 * Cycle to next item
+		 * 
+		 * @param {Number}
+		 *            [n]
+		 */
 
     }, {
       key: "next",
@@ -11164,9 +11466,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Cycle to previous item
-       * @param {Number} [n]
-       */
+		 * Cycle to previous item
+		 * 
+		 * @param {Number}
+		 *            [n]
+		 */
 
     }, {
       key: "prev",
@@ -11188,10 +11492,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Cycle to nth item
-       * @param {Number} [n]
-       * @param {Function} callback
-       */
+		 * Cycle to nth item
+		 * 
+		 * @param {Number}
+		 *            [n]
+		 * @param {Function}
+		 *            callback
+		 */
 
     }, {
       key: "set",
@@ -11217,8 +11524,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -11251,19 +11558,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var TapTarget = function (_Component19) {
     _inherits(TapTarget, _Component19);
 
     /**
-     * Construct TapTarget instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct TapTarget instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function TapTarget(el, options) {
       _classCallCheck(this, TapTarget);
 
@@ -11272,11 +11582,14 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this67.el.M_TapTarget = _this67;
 
       /**
-       * Options for the select
-       * @member TapTarget#options
-       * @prop {Function} onOpen - Callback function called when feature discovery is opened
-       * @prop {Function} onClose - Callback function called when feature discovery is closed
-       */
+		 * Options for the select
+		 * 
+		 * @member TapTarget#options
+		 * @prop {Function} onOpen - Callback function called when feature
+		 *       discovery is opened
+		 * @prop {Function} onClose - Callback function called when feature
+		 *       discovery is closed
+		 */
       _this67.options = $.extend({}, TapTarget.defaults, options);
 
       _this67.isOpen = false;
@@ -11295,16 +11608,16 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this.el.TapTarget = undefined;
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -11324,8 +11637,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -11336,9 +11649,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Target Click
-       * @param {Event} e
-       */
+		 * Handle Target Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleTargetClick",
@@ -11347,9 +11662,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Origin Click
-       * @param {Event} e
-       */
+		 * Handle Origin Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleOriginClick",
@@ -11358,9 +11675,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Resize
-       * @param {Event} e
-       */
+		 * Handle Resize
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleResize",
@@ -11369,9 +11688,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Resize
-       * @param {Event} e
-       */
+		 * Handle Resize
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleDocumentClick",
@@ -11384,8 +11705,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Tap Target
-       */
+		 * Setup Tap Target
+		 */
 
     }, {
       key: "_setup",
@@ -11431,8 +11752,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Calculate positioning
-       */
+		 * Calculate positioning
+		 */
 
     }, {
       key: "_calculatePositioning",
@@ -11520,8 +11841,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Open TapTarget
-       */
+		 * Open TapTarget
+		 */
 
     }, {
       key: "open",
@@ -11543,8 +11864,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Close Tap Target
-       */
+		 * Close Tap Target
+		 */
 
     }, {
       key: "close",
@@ -11571,8 +11892,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -11605,19 +11926,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   };
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var FormSelect = function (_Component20) {
     _inherits(FormSelect, _Component20);
 
     /**
-     * Construct FormSelect instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct FormSelect instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function FormSelect(el, options) {
       _classCallCheck(this, FormSelect);
 
@@ -11631,9 +11955,10 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this68.el.M_FormSelect = _this68;
 
       /**
-       * Options for the select
-       * @member FormSelect#options
-       */
+		 * Options for the select
+		 * 
+		 * @member FormSelect#options
+		 */
       _this68.options = $.extend({}, FormSelect.defaults, options);
 
       _this68.isMultiple = _this68.$el.prop('multiple');
@@ -11641,7 +11966,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       // Setup
       _this68.el.tabIndex = -1;
       _this68._keysSelected = {};
-      _this68._valueDict = {}; // Maps key to original and generated option element.
+      _this68._valueDict = {}; // Maps key to original and generated option
+								// element.
       _this68._setupDropdown();
 
       _this68._setupEventHandlers();
@@ -11653,8 +11979,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this._removeDropdown();
@@ -11662,8 +11988,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -11682,8 +12008,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -11698,9 +12024,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Select Change
-       * @param {Event} e
-       */
+		 * Handle Select Change
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleSelectChange",
@@ -11709,9 +12037,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Option Click
-       * @param {Event} e
-       */
+		 * Handle Option Click
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleOptionClick",
@@ -11749,8 +12079,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Input Click
-       */
+		 * Handle Input Click
+		 */
 
     }, {
       key: "_handleInputClick",
@@ -11762,8 +12092,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup dropdown
-       */
+		 * Setup dropdown
+		 */
 
     }, {
       key: "_setupDropdown",
@@ -11834,7 +12164,8 @@ $jscomp.polyfill = function (e, r, p, m) {
         if (!this.el.disabled) {
           var dropdownOptions = $.extend({}, this.options.dropdownOptions);
 
-          // Add callback for centering selected option when dropdown content is scrollable
+          // Add callback for centering selected option when dropdown content
+			// is scrollable
           dropdownOptions.onOpenEnd = function (el) {
             var selectedOption = $(_this71.dropdownOptions).find('.selected').first();
 
@@ -11847,8 +12178,13 @@ $jscomp.polyfill = function (e, r, p, m) {
 
               // Handle scrolling to selected option
               if (_this71.dropdown.isScrollable) {
-                var scrollOffset = selectedOption[0].getBoundingClientRect().top - _this71.dropdownOptions.getBoundingClientRect().top; // scroll to selected option
-                scrollOffset -= _this71.dropdownOptions.clientHeight / 2; // center in dropdown
+                var scrollOffset = selectedOption[0].getBoundingClientRect().top - _this71.dropdownOptions.getBoundingClientRect().top; // scroll
+																																		// to
+																																		// selected
+																																		// option
+                scrollOffset -= _this71.dropdownOptions.clientHeight / 2; // center
+																			// in
+																			// dropdown
                 _this71.dropdownOptions.scrollTop = scrollOffset;
               }
             }
@@ -11865,10 +12201,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Add option to value dict
-       * @param {Element} el  original option element
-       * @param {Element} optionEl  generated option element
-       */
+		 * Add option to value dict
+		 * 
+		 * @param {Element}
+		 *            el original option element
+		 * @param {Element}
+		 *            optionEl generated option element
+		 */
 
     }, {
       key: "_addOptionToValueDict",
@@ -11884,8 +12223,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove dropdown
-       */
+		 * Remove dropdown
+		 */
 
     }, {
       key: "_removeDropdown",
@@ -11898,12 +12237,16 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup dropdown
-       * @param {Element} select  select element
-       * @param {Element} option  option element from select
-       * @param {String} type
-       * @return {Element}  option element added
-       */
+		 * Setup dropdown
+		 * 
+		 * @param {Element}
+		 *            select select element
+		 * @param {Element}
+		 *            option option element from select
+		 * @param {String}
+		 *            type
+		 * @return {Element} option element added
+		 */
 
     }, {
       key: "_appendOptionWithIcon",
@@ -11931,10 +12274,12 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Toggle entry from option
-       * @param {String} key  Option key
-       * @return {Boolean}  if entry was added or removed
-       */
+		 * Toggle entry from option
+		 * 
+		 * @param {String}
+		 *            key Option key
+		 * @return {Boolean} if entry was added or removed
+		 */
 
     }, {
       key: "_toggleEntryFromArray",
@@ -11953,15 +12298,16 @@ $jscomp.polyfill = function (e, r, p, m) {
         // Set checkbox checked value
         $optionLi.find('input[type="checkbox"]').prop('checked', notAdded);
 
-        // use notAdded instead of true (to detect if the option is selected or not)
+        // use notAdded instead of true (to detect if the option is selected or
+		// not)
         $optionLi.prop('selected', notAdded);
 
         return notAdded;
       }
 
       /**
-       * Set text value to input
-       */
+		 * Set text value to input
+		 */
 
     }, {
       key: "_setValueToInput",
@@ -11987,8 +12333,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Set selected state of dropdown to match actual select element
-       */
+		 * Set selected state of dropdown to match actual select element
+		 */
 
     }, {
       key: "_setSelectedStates",
@@ -12009,10 +12355,13 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Make option as selected and scroll to selected position
-       * @param {jQuery} collection  Select options jQuery element
-       * @param {Element} newOption  element of the new option
-       */
+		 * Make option as selected and scroll to selected position
+		 * 
+		 * @param {jQuery}
+		 *            collection Select options jQuery element
+		 * @param {Element}
+		 *            newOption element of the new option
+		 */
 
     }, {
       key: "_activateOption",
@@ -12027,9 +12376,10 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Selected Values
-       * @return {Array}  Array of selected values
-       */
+		 * Get Selected Values
+		 * 
+		 * @return {Array} Array of selected values
+		 */
 
     }, {
       key: "getSelectedValues",
@@ -12047,8 +12397,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
@@ -12078,19 +12428,22 @@ $jscomp.polyfill = function (e, r, p, m) {
   var _defaults = {};
 
   /**
-   * @class
-   *
-   */
+	 * @class
+	 * 
+	 */
 
   var Range = function (_Component21) {
     _inherits(Range, _Component21);
 
     /**
-     * Construct Range instance
-     * @constructor
-     * @param {Element} el
-     * @param {Object} options
-     */
+	 * Construct Range instance
+	 * 
+	 * @constructor
+	 * @param {Element}
+	 *            el
+	 * @param {Object}
+	 *            options
+	 */
     function Range(el, options) {
       _classCallCheck(this, Range);
 
@@ -12099,9 +12452,10 @@ $jscomp.polyfill = function (e, r, p, m) {
       _this72.el.M_Range = _this72;
 
       /**
-       * Options for the range
-       * @member Range#options
-       */
+		 * Options for the range
+		 * 
+		 * @member Range#options
+		 */
       _this72.options = $.extend({}, Range.defaults, options);
 
       _this72._mousedown = false;
@@ -12118,8 +12472,8 @@ $jscomp.polyfill = function (e, r, p, m) {
 
 
       /**
-       * Teardown component
-       */
+		 * Teardown component
+		 */
       value: function destroy() {
         this._removeEventHandlers();
         this._removeThumb();
@@ -12127,8 +12481,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup Event Handlers
-       */
+		 * Setup Event Handlers
+		 */
 
     }, {
       key: "_setupEventHandlers",
@@ -12157,8 +12511,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove Event Handlers
-       */
+		 * Remove Event Handlers
+		 */
 
     }, {
       key: "_removeEventHandlers",
@@ -12181,9 +12535,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Range Change
-       * @param {Event} e
-       */
+		 * Handle Range Change
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleRangeChange",
@@ -12199,9 +12555,11 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Range Mousedown and Touchstart
-       * @param {Event} e
-       */
+		 * Handle Range Mousedown and Touchstart
+		 * 
+		 * @param {Event}
+		 *            e
+		 */
 
     }, {
       key: "_handleRangeMousedownTouchstart",
@@ -12223,8 +12581,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Range Input, Mousemove and Touchmove
-       */
+		 * Handle Range Input, Mousemove and Touchmove
+		 */
 
     }, {
       key: "_handleRangeInputMousemoveTouchmove",
@@ -12241,8 +12599,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Range Mouseup and Touchend
-       */
+		 * Handle Range Mouseup and Touchend
+		 */
 
     }, {
       key: "_handleRangeMouseupTouchend",
@@ -12252,8 +12610,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Handle Range Blur, Mouseout and Touchleave
-       */
+		 * Handle Range Blur, Mouseout and Touchleave
+		 */
 
     }, {
       key: "_handleRangeBlurMouseoutTouchleave",
@@ -12279,8 +12637,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Setup dropdown
-       */
+		 * Setup dropdown
+		 */
 
     }, {
       key: "_setupThumb",
@@ -12294,8 +12652,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Remove dropdown
-       */
+		 * Remove dropdown
+		 */
 
     }, {
       key: "_removeThumb",
@@ -12304,8 +12662,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * morph thumb into bubble
-       */
+		 * morph thumb into bubble
+		 */
 
     }, {
       key: "_showRangeBubble",
@@ -12325,9 +12683,10 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Calculate the offset of the thumb
-       * @return {Number}  offset in pixels
-       */
+		 * Calculate the offset of the thumb
+		 * 
+		 * @return {Number} offset in pixels
+		 */
 
     }, {
       key: "_calcRangeOffset",
@@ -12345,8 +12704,8 @@ $jscomp.polyfill = function (e, r, p, m) {
       }
 
       /**
-       * Get Instance
-       */
+		 * Get Instance
+		 */
 
     }, {
       key: "getInstance",
