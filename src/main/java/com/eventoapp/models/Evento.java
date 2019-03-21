@@ -28,7 +28,7 @@ public class Evento implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long codigo;
 	private String nome;
-	private String local;.
+	private String local;
 	private Date data;
 	@DateTimeFormat(pattern="HH:mm")
 	private String hora;
