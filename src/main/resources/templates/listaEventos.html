@@ -17,8 +17,8 @@
 <body>
 	<h1>Lista de Eventos</h1>
 <form class="container">
-		<a href="CadastrarEvento" class="waves-effect waves-light btn-large"><i
-			class="material-icons left">add_circle_outline</i>Cadastrar Evento</a>
+		<a  href="CadastrarEvento" class="waves-effect waves-light btn-large" ><i
+			class="material-icons left" >add_circle_outline</i>Cadastrar Evento</a>
 
 	<table class="striped">
 		<thead>
@@ -27,14 +27,18 @@
 				<th>Local</th>
 				<th>Data</th>
 				<th>Horario</th>
+				<th>Editar</th>
+				<th>Excluir</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr th:each="evento: ${eventos}">
-				<td><span th:text="${evento.nome}"></span></td>
+				<td><a th:href="@{/{codigo}(codigo=${evento.codigo})}"><span th:text="${evento.nome}"></span></a></td>
 				<td><span th:text="${evento.local}"></span></td>
 				<td><span th:text="${evento.data}"></span></td>
 				<td><span th:text="${evento.hora}"></span></td>
+				<td><i class="material-icons" style="color: #00b38f">edit</i></td>
+				<td><i class="material-icons" style="color: #00b38f">cancel</i></td>
 			</tr>
 		</tbody>
 	</table>

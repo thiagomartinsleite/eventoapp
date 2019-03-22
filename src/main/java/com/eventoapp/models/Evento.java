@@ -2,7 +2,6 @@ package com.eventoapp.models;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,12 +17,6 @@ public class Evento implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public long getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(long codigo) {
-		this.codigo = codigo;
-	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long codigo;
@@ -56,5 +49,10 @@ public class Evento implements Serializable{
 	public void setHora(String hora) {
 		this.hora = hora;
 	}
-	
+	public long getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
+	}
 }
