@@ -20,7 +20,7 @@ public class ListaController {
 		mv.addObject("eventos", eventos);
 		return mv;
 	}
-	@RequestMapping( "/detalhesEvento/{codigo}")
+	@RequestMapping( "/{codigo}")
 	public ModelAndView detalhesEvento(@PathVariable("codigo") long codigo){
 		Evento evento = eventoRepository.findByCodigo(codigo);
 		ModelAndView mv = new ModelAndView("eventos/detalhesEvento");

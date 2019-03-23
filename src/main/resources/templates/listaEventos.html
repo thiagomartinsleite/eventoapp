@@ -37,7 +37,7 @@
 				<td><span th:text="${evento.local}"></span></td>
 				<td><span th:text="${evento.data}"></span></td>
 				<td><span th:text="${evento.hora}"></span></td>
-				<td><a th:href="@{/detalhesEvento/{codigo}(codigo=${evento.codigo})}"><i class="material-icons" style="color: #00b38f">edit</i></a></td>
+				<td><a th:href="@{/{codigo}(codigo=${evento.codigo})}"><i class="material-icons" style="color: #00b38f">edit</i></a></td>
 				<td><i class="material-icons" style="color: #00b38f">cancel</i></td>
 			</tr>
 		</tbody>

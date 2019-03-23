@@ -17,14 +17,14 @@
 <body>
 	<h1>Lista de Eventos</h1>
 <form class="container">
-		<a  href="/CadastrarEvento" class="waves-effect waves-light btn-large" ><i
-			class="material-icons left" >add_circle_outline</i>Cadastrar Evento</a>
+		<a href="/eventos" class="waves-effect waves-light btn-large"><i
+				class="material-icons left">list</i>Eventos</a>
 				<div th:each="evento: ${evento}">
 				<div class="row">
-				<p><span th:text="${evento.nome}"></span></p>
-				<p><span th:text="${evento.local}"></span></p>
-				<p><span th:text="${evento.data}"></span></p>
-				<p><span th:text="${evento.hora}"></span></p>
+				<p><b>Nome: </b> <span th:text="${evento.nome}"></span></p>
+				<p><b>Local: </b><span th:text="${evento.local}"></span></p>
+				<p><b>Data: </b><span th:text="${evento.data}"></span></p>
+				<p><b>Horario: </b> <span th:text="${evento.hora}"></span></p>
 				</div>
 				</div>	
 	</form>
