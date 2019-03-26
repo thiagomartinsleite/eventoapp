@@ -8,39 +8,42 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
 <!--Import materialize.css-->
-<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 </head>
 <body>
-	<h1>Cadastro de Eventos</h1>
+	<header>
+		<th:block th:include="eventos/menu"></th:block>
+	</header>
 	<div class="row">
 		<form method="post" class="container">
-			<a href="/eventos" class="waves-effect waves-light btn-large"><i
-				class="material-icons left">list</i>Eventos</a>
 			<div class="row">
 				<div class="input-field col s12">
-					<input id="idNome" class="validate" type="text" value="" name="nome" /> 
-					<label for="idNome">Nome</label>
+					<input id="idNome" class="validate" type="text" value=""
+						name="nome" /> <label for="idNome">Nome</label>
 				</div>
 				<div class="input-field col s4">
-					<input id="idLocal" class="validate" type="text" value="" name="local" /> 
-					<label for="idLocal">Local</label>
+					<input id="idLocal" class="validate" type="text" value=""
+						name="local" /> <label for="idLocal">Local</label>
 				</div>
-				
+
 				<div class="input-field col s4">
-					<input id="idData" type="date" class="datepicker" value="" name="data" /> 
-					<label for="idData">Data</label>
+					<input id="idData" class="validate" type="date" value=""
+						name="data" /> <label for="idData">Data</label>
 				</div>
-				
+
 				<div class="input-field col s4">
-					<input id="idHora" class="validate" type="text" value="" name="hora" /> 
-					<label for="idHora">Hora</label>
+					<input id="idHora" class="validate" type="time" value=""
+						name="hora" /> <label for="idHora">Hora</label>
 				</div>
 			</div>
-			<button class="btn waves-effect waves-light" type="submit" name="action">
+			<th:block th:include="eventos/mensagemValidacao"></th:block>
+			<button class="waves-effect waves-light btn right" type="submit"
+				name="action">
 				Salvar <i class="material-icons right">save</i>
 			</button>
 		</form>
@@ -48,6 +51,7 @@
 
 
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </body>
 </html>

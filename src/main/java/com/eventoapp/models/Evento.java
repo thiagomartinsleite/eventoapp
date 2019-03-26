@@ -1,15 +1,17 @@
 package com.eventoapp.models;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.OneToMany;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+@SuppressWarnings("deprecation")
 @Entity
 public class Evento implements Serializable{
 	
@@ -20,11 +22,20 @@ public class Evento implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long codigo;
+	@NotEmpty
 	private String nome;
+	@NotEmpty
 	private String local;
-	private Date data;
+	@NotEmpty
+	@DateTimeFormat(pattern="dd-mm-yyyy")
+	private String data;
+	@NotEmpty
 	@DateTimeFormat(pattern="HH:mm")
 	private String hora;
+	
+	@OneToMany
+	private List<Convidado> convidados;
+	
 	public String getNome() {
 		return nome;
 	}
@@ -37,10 +48,10 @@ public class Evento implements Serializable{
 	public void setLocal(String local) {
 		this.local = local;
 	}
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 	public String getHora() {
