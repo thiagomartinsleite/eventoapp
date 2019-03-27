@@ -34,8 +34,8 @@
 					<b>Horario: </b> <span th:text="${evento.hora}"></span>
 				</p>
 			</div>
-
 		</div>
+
 		<div class="row">
 			<div class="input-field col s6">
 				<input id="nomeConvidado" type="text" value="" name="nome_convidado" />
@@ -50,29 +50,29 @@
 
 		<button class="waves-effect waves-light btn right" type="submit">Adicionar</button>
 
-
-
-		<div th:each="convidado: ${convidados}">
-			<div class="row">
-				<div class="input-field col s6">
-					<p>
-						<span th:text="${convidado.nome_convidado}"></span>
-					</p>
-				</div>
-				<div class="input-field col s3">
-					<p>
-						<span th:text="${convidado.rg}"></span>
-					</p>
-				</div>
-			</div>
-		</div>
-
-
-
+		<table class="responsive-table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Rg</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="convidado: ${convidados}">
+					<td><span th:text="${convidado.nome_convidado}"></span></td>
+					<td><span th:text="${convidado.rg}"></span></td>
+				</tr>
+			</tbody>
+		</table>
 	</form>
-	<!--JavaScript at end of body for optimized loading-->
-	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.sidenav').sidenav();
+		});
+	</script>
 </body>
 </html>

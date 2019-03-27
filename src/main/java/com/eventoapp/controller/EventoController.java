@@ -18,7 +18,7 @@ public class EventoController {
 	@Autowired
 	private EventoRepository eventoRepository;
 	
-	@RequestMapping(value="/CadastrarEvento", method=RequestMethod.GET)
+	@RequestMapping(value = "/CadastrarEvento", method=RequestMethod.GET)
 	public String form() {
 		return "eventos/formEvento";
 	}

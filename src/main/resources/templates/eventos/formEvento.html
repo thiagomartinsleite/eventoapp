@@ -2,8 +2,6 @@
 <html xmlns:th="http://thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<meta charset="ISO-8859-1">
-<title>EventosApp</title>
 <!--Import Google Icon Font-->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet" />
@@ -13,14 +11,15 @@
 
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<meta charset="ISO-8859-1">
+<title>EventosApp</title>
 </head>
 <body>
 	<header>
 		<th:block th:include="eventos/menu"></th:block>
 	</header>
-	<div class="row">
-		<form method="post" class="container">
+	<form class="container" method="post">
+		<div class="row">
 			<div class="row">
 				<div class="input-field col s12">
 					<input id="idNome" class="validate" type="text" value=""
@@ -42,16 +41,17 @@
 				</div>
 			</div>
 			<th:block th:include="eventos/mensagemValidacao"></th:block>
-			<button class="waves-effect waves-light btn right" type="submit"
-				name="action">
-				Salvar <i class="material-icons right">save</i>
-			</button>
-		</form>
-	</div>
-
-
-	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+			<button class="waves-effect waves-light btn right" type="submit">Salvar</button>
+		</div>
+	</form>
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.sidenav').sidenav();
+		});
+	</script>
 </body>
 </html>
