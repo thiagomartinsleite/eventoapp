@@ -9,6 +9,9 @@
 <link type="text/css" rel="stylesheet"
 	href="materialize/css/materialize.min.css" media="screen,projection" />
 
+<!-- StyleCss -->
+<link rel="stylesheet" href="style/styleCess.css" />
+
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta charset="ISO-8859-1">
@@ -16,7 +19,7 @@
 </head>
 <body>
 	<header>
-	<th:block th:include="eventos/menu"></th:block>
+		<th:block th:include="eventos/menu"></th:block>
 	</header>
 	<form class="container">
 		<table class="responsive-table">
@@ -37,8 +40,9 @@
 					<td><span th:text="${evento.data}"></span></td>
 					<td><span th:text="${evento.hora}"></span></td>
 					<td><a th:href="@{/{codigo}(codigo=${evento.codigo})}"><i
-							class="material-icons">edit</i></a></td>
-					<td><i class="material-icons">cancel</i></td>
+							class="material-icons icon-blue">edit</i></a></td>
+					<td><a th:href="@{/deletar/{codigo}(codigo=${evento.codigo})}"><i
+							class="material-icons icon-blue">delete</i></a></td>
 				</tr>
 			</tbody>
 		</table>

@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -41,6 +42,23 @@ public class ListaController {
 		mv.addObject("convidados", convidados);
 		return mv;
 		
+	}
+	
+	@RequestMapping("/deletarConvidado")
+	public String deletarConvidado(@RequestParam(name="rg")  String rg) {
+		Convidado convidado = convidadoRepository.findByRg(rg);
+		convidadoRepository.delete(convidado);
+		
+		return "redirect:/" + convidado.getEvento().getCodigo();
+	}
+	
+	@RequestMapping("/deletar/{codigo}")
+	public String deletarEvento(@PathVariable("codigo") long codigo) {
+		Evento evento = eventoRepository.findByCodigo(codigo);
+		Iterable<Convidado> convidado = convidadoRepository.findByEvento(evento);		
+		convidadoRepository.deleteAll(convidado);
+		eventoRepository.delete(evento);		
+		return "redirect:/eventos";
 	}
 	
 	@RequestMapping(value= "/{codigo}", method=RequestMethod.POST)
